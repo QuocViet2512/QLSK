@@ -1,0 +1,205 @@
+﻿@model QLEventKhoa.Models.tbSuKien
+@{
+    ViewBag.Title = "editEvent";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<section class="content-header">
+    <h1 style="text-align:center">
+        <b>Xem và Điều chỉnh</b>
+    </h1>
+    <br />
+    <a href="@Url.Action("DanhSachEvent","QLEvent")">Quay về danh sách sự kiện</a>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("editEvent","QLEvent")">Xem chi tiết sự kiện đề xuất</a></li>
+    </ol>
+</section>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("ConfirmEvent", "SuggestEventManager", FormMethod.Post, new { @enctype = "multipart/form-data" }))
+            {
+            <div class="box box-primary">
+                <div class="box box-header with-boder">
+                </div>
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.HiddenFor(model => model.idEvent)
+                @Html.HiddenFor(model => model.imageEvent)
+                @Html.HiddenFor(model => model.EmailDX)
+                @Html.HiddenFor(model => model.SKDX)
+                @Html.HiddenFor(model => model.KeHoach)
+
+                <div class="box-body">
+
+                    <div class="form-group">
+                        <label>Tên sự kiện</label>
+                        @*<input type="text" class="form-control" id="TenEvent" placeholder="Tên sự kiện">*@
+                        @Html.EditorFor(model => model.tenEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Tên sự kiện", required = "required", maxlength = "255" } })
+                        @Html.ValidationMessageFor(model => model.tenEvent, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Địa điểm</label>
+                        @Html.EditorFor(model => model.noiToChuc, new { htmlAttributes = new { @class = "form-control", placeholder = "Nơi tổ chức sự kiện", required = "required", maxlength = "100" } })
+                        @Html.ValidationMessageFor(model => model.noiToChuc, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Số lượng sinh viên</label>
+                        @Html.EditorFor(model => model.soLuongThamGia, new { htmlAttributes = new { @class = "form-control", placeholder = "Số lượng sinh viên tham gia tối thiểu 50 - tối đa 10000", @type = "number", required = "required" } })
+
+                        @Html.ValidationMessageFor(model => model.soLuongThamGia, "", new { @class = "text-danger" })
+
+                    </div>
+                    <div class="form-group">
+                        <label>Khoa</label>
+
+                        @*@Html.DropDownListFor(model => model.maKhoa, new SelectList(Model.listKhoa, "idKhoa", "tenKhoa"), "Vui lòng chọn khoa", htmlAttributes: new { @class = "form-control" })*@
+                        @Html.DropDownListFor(model => model.idKhoa, new SelectList(Model.listKhoa, "idKhoa", "tenKhoa"), "Vui lòng chọn khoa", htmlAttributes: new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.idKhoa, "", new { @class = "text-danger" })
+
+                    </div>
+
+
+                    <div class="form-group">
+                        <label>Loại sự kiện</label>
+
+                        @Html.DropDownListFor(model => model.idLoaiEvent, new SelectList(Model.listLoaiEvent, "idLoaiEvent", "tenLoaiEvent"), "Vui lòng chọn loại sự kiện", htmlAttributes: new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.idLoaiEvent, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Tag sự kiện</label>
+
+                        @Html.DropDownListFor(model => model.idTagEvent, new SelectList(Model.listTag, "idTagEvent", "tenTagEvent"), "Vui lòng tag sự kiện", htmlAttributes: new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.idTagEvent, "", new { @class = "text-danger" })
+                    </div><!-- /.form-group -->
+
+
+                    <div class="form-group">
+                        <label>Chi phí tổ chức (Không bắt buộc)</label>
+                        @Html.EditorFor(model => model.chiPhiEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Chi phí sự kiện", @type = "number", min = "0" } })
+                        @Html.ValidationMessageFor(model => model.chiPhiEvent, "", new { @class = "text-danger" })
+                    </div>
+
+                    <div class="form-group">
+                        <label>Nhà tổ chức</label>
+
+                        @Html.DropDownListFor(model => model.idNhaTC, new SelectList(Model.listNTC, "idNhaTC", "tenNTC"), "Vui lòng nhà tổ chức sự kiện", htmlAttributes: new { @class = "form-control" })
+
+                        @Html.ValidationMessageFor(model => model.idNhaTC, "", new { @class = "text-danger" })
+                    </div><!-- /.form-group -->
+
+                    <div class="row" style="width:600px">
+                        <div class="col-md-6">
+                            <div class="form-group" style="width: 250px;font-weight: bold">
+                                <label>Ngày và thời gian bắt đầu:</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-clock-o"></i>
+                                    </div>
+
+                                    @*<input type="datetime-local" class="form-control pull-right" id="DateEvent" name="DateEvent">*@
+
+                                    @Html.EditorFor(model => model.ngayBatDau, new { htmlAttributes = new { @class = "form-control", type = "datetime-local", required = "required" } })
+                                    @*@Html.EditorFor(model=>model.ngayBatDau)*@
+                                    @Html.ValidationMessageFor(model => model.ngayBatDau, "", new { @class = "text-danger" })
+                                </div><!-- /.input group -->
+                            </div><!-- /.form group -->
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group" style="width: 350px;float: left">
+                                <label>Mã tham gia sự kiện</label>
+
+                                <div class="input-group input-group-sm" style="font-weight: bold">
+                                    @*<input type="text" class="form-control" id="CodeEvent" placeholder="Mã sự kiện">*@
+                                    @Html.EditorFor(model => model.maThamGia, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", id = "rand", placeholder = "Mã tham gia", maxlength = "5", disable = "disable" } })
+
+                                    @Html.ValidationMessageFor(model => model.maThamGia, "", new { @class = "text-danger" })
+                                    @*<span class="input-group-btn">
+                                <button class="btn btn-danger btn-flat" onclick="makeid()" type="button" style="font-weight: bold;font-size: 13px">Random mã sự kiện</button>
+                            </span>*@
+                                </div><!-- /input-group -->
+                            </div>
+                        </div>
+
+                        <script id="rand">
+
+                            function makeid() {
+                                var text = "";
+                                var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+                                for (var i = 0; i < 5; i++)
+                                    text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+                                document.getElementById("rand").value = text;
+                            }
+                        </script>
+                    </div><!--Row mã sự kiện ngày event -->
+                    <div class="form-group">
+                        <label>Trạng thái sự kiện</label>
+                        @Html.DropDownListFor(model => model.statusEvent, new SelectList(Model.listStatus, "statusEvent", "tenTrangThaiEvent"), "Vui lòng chọn trạng thái sự kiện", htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.statusEvent, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <!-- hình ảnh -->
+                        <label for="BannerEvent">Banner sự kiện</label>
+                        @*<label for="fileupload">Tên file:@Model.imageEvent</label>*@
+                        <input type="file" name="fileupload" id="fileupload"
+                               onchange="document.getElementById('banner').src = window.URL.createObjectURL(this.files[0])"
+                               accept="images/*,.jpg,.jpeg,.png, .gif">
+                        @if (TempData["Alert"] != null)
+                        {
+                            <b>@TempData["Alert"]</b>
+                        }
+                        <div>
+                            <img id="banner" src="@Url.Content("~/images/uploads/"+Model.imageEvent)" width="500" height="250" />(Banner hiện tại)
+                        </div>
+                    </div>
+                    <div class="box box-info">
+                        <div class="box-header">
+                            <h3 class="box-title" style="font-weight: bold">Nội dung sự kiện</h3><!-- <small>Advanced and full of features</small> -->
+
+                        </div>
+                        <div class="box-body pad">
+
+                            @*<textarea id = "editorSuKien" name="editorSuKien" rows="10" cols="80" maxlength="3500" placeholder="Nội dung sự kiện"></textarea>*@
+                            @Html.TextAreaFor(model => model.noiDungEvent, new { @class = "form-control", required = "required", maxlength = "3500", placeholder = "Nội dung sự kiện" })
+                            @Html.ValidationMessageFor(model => model.noiDungEvent, "", new { @class = "text-danger" })
+                        </div>
+                        <script>
+                              @* type = "text/javascript" > CKEDITOR.replace('editorSuKien');*@
+                                var editor = CKEDITOR.replace('noiDungEvent');
+                        </script>
+                    </div>
+                </div><!-- /.box -->
+
+                <div class="box-footer">
+
+                    @if (Model.statusEvent != 2)
+                    {
+                        <div style="display:flex;width:100%;column-gap:30rem">
+                            <button type="submit" class="btn btn-success btn-lg" style="width: 300px">Xác nhận</button>
+                            <button type="reset" class="btn btn-danger btn-lg" onclick="CanelAction()" style="width: 300px">Hủy thao tác</button>
+                            <a type="button" href="@Url.Action("Delete","SuggestEventManager",new { id = Model.idEvent})" class="btn btn-warning btn-lg" style="width: 300px">Xóa sự kiện</a>
+                        </div>
+                    }
+
+                </div>
+            </div><!-- /.box-body -->
+            }
+        </div><!-- /.col-->
+    </div><!-- ./row -->
+</section><!-- /.content -->
+<script>
+    function CanelAction() {
+        history.back();
+    }
+</script>

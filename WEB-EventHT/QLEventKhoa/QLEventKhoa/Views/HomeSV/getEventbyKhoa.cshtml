@@ -1,0 +1,88 @@
+﻿
+@using QLEventKhoa.Models
+@{
+    ViewBag.Title = "Sự kiện theo Khoa";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+@using PagedList.Mvc;
+@model PagedList.IPagedList<QLEventKhoa.Models.tbSuKien>
+
+<section>
+
+
+    <!------------------------------------------------------------------------------------------------------------------------------------>
+    <div class="rows inn-page-bg com-colo">
+
+        <div class="container inn-page-con-bg tb-space pad-bot-redu" id="inner-page-title">
+            <!-- TITLE & DESCRIPTION -->
+            <div class="spe-title col-md-12">
+
+                <h2>Sự kiện <b style="color:royalblue">@ViewBag.tenKhoa</b></h2>
+
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
+                </div>
+                <div class="form-group" style="margin-top: 40px">
+
+                    <div class="form-inline">
+                        @using (Html.BeginForm("getEventbyKhoa", "HomeSV", FormMethod.Post))
+                        {
+                            <!---Tìm kiếm sự kiện-->
+                            <input class="form-control autotcomplete" value="@ViewBag.search" id="txtsearch" name="txtsearch" type="search" placeholder="Tìm kiếm sự kiện...." aria-label="Search" maxlength="50" style="width: 350px;border-color:blue;margin-right:5px">
+                            <!---Tìm kiếm sự kiện-->
+                            @Html.DropDownList("selectLoaiEvent", ViewBag.LoaiEvent as SelectList, "Chọn loại sự kiện", new { @class = "form-control" })
+                            <span>
+                                <button type="submit" class="btn btn-primary">Tìm kiếm</button>
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+            <div>
+                @foreach (var item in Model)
+                {
+                    <div class="results">
+                        <div class='col-md-6 wow slideInUp'>
+                            <a href="@Url.Action("DetailEvent", "HomeSV", new { id = item.idEvent })">
+
+                                <div class='tour-mig-like-com'>
+                                    <div class='tour-mig-lc-img'> <img src="~/images/uploads/@item.imageEvent" alt=''> </div>
+                                    <div class='tour-mig-lc-con'>
+                                        <h5>@item.tenEvent</h5>
+                                        <p><span>@item.ngayBatDau.ToString("dd-MM-yyyy HH:mm")</span>@item.noiToChuc</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                }
+            </div>
+            <hr />
+            <!--END TITLE & DESCRIPTION -->
+        </div>
+        <div class="container inn-page-con-bg ">
+            <center>
+                @Html.PagedListPager(Model, page => Url.Action("getEventbyKhoa", new { page = page }))
+            </center>
+        </div>
+    </div>
+</section>
+
+@*<script>
+                         //$("#txtsearch").keyup(function () {
+                                        //    var filter = $(this).val().toLowerCase(),
+                                        //        count = 0;
+                                        //    $('.results .resulsfilter').each(function () {
+
+                                        //        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+                                        //            $(this).hide();
+
+                                        //        } else {
+                                        //            $(this).show();
+                                        //            count++;
+                                        //        }
+                                        //    });
+                                        //});
+    </script>*@

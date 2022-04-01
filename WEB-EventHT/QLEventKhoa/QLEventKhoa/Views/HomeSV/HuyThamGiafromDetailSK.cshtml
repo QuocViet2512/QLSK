@@ -1,0 +1,55 @@
+﻿
+@model QLEventKhoa.Models.tbSuKien
+@using QLEventKhoa.Models
+
+@{
+    tbSinhVien sv = (tbSinhVien)Session["SV"];
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <center style="margin-bottom:10px"><h4 class="modal-title">Xác nhận trước khi hủy than gia</h4></center>
+    @using (Html.BeginForm("HuyThamGiafromDetailSK", "HomeSV", new { id = Model.idEvent }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <b>Ngày bắt đầu sự kiện: </b>
+            @Model.ngayBatDau.ToString("dd-MM-yyyy HH:mm")
+        </div>
+        <div class="form-group">
+            <b>Nơi diễn ra: </b>
+            @Model.noiToChuc
+        </div>
+        <div class="form-group">
+            <b>  Họ và tên sinh viên tham gia:</b>
+            @sv.tenSV
+        </div>
+        <div class="form-group">
+            <b>MSSV:</b> @sv.maSV
+        </div>
+        <div class="form-group">
+            <b>Lớp:</b>
+            @sv.tbLopHoc.tenLopHoc - <b>Khoa: </b>@sv.tbKhoa.tenKhoa
+        </div>
+        <div class="form-group">
+            <b>Email liên lạc: </b>
+            @sv.emailSV
+        </div>
+        <div class="form-group">
+            <b>Số điện thoại liên lạc: </b>
+            @sv.phoneSV
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-weight:bold">Đóng</button>
+            <button type="submit" class="btn btn-warning" onlick="HuyThamGiafromDetailSK();" style="margin-right:5px;font-weight:bold">Hủy tham gia</button>
+        </div>
+    }
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

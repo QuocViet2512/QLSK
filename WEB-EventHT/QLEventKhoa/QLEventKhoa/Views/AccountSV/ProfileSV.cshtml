@@ -1,0 +1,123 @@
+﻿@model QLEventKhoa.Models.tbSinhVien
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+<section>
+    <div class="db">
+        <!--LEFT SECTION THÔNG TIN CÁ NHÂN-->
+        @Html.Partial("_PartialPageLeftSV")
+        <!--CENTER SECTION-->
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Thông tin cá nhân</h4>
+                <div class="db-2-main-com db2-form-pay db2-form-com">
+                    @if (Session["LogIn"] == null)
+                    {
+                        <p>Vui lòng <a href="@Url.Action("LoginSV", "AccountSV")">Đăng nhập</a></p>
+                    }
+                    else
+                    {
+
+                        using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                          
+                            <div class="col s12">
+                                <div class="row">
+
+                                    <div class="input-field col s12">
+                                        <div class="form-inline">
+                                            @Html.DisplayName("Mã số sinh viên: ")
+                                            <b style="margin-left:30px">
+                                                @Model.maSV
+                                            </b>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="input-field col s12">
+                                        <div class="form-inline">
+                                            @Html.DisplayName("Họ và tên: ")
+                                            <b style="margin-left:65px">
+                                                @Model.tenSV
+                                            </b>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <div class="form-inline">
+                                            @Html.DisplayName("Ngày sinh: ")
+                                            <b style="margin-left:65px">
+                                                @Model.ngaySinhSV.ToShortDateString()
+                                            </b>
+                                        </div>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        <div class="form-inline">
+                                            @Html.DisplayName("Lớp học: ")
+                                            <b style="margin-left:75px">
+                                                @Model.tbLopHoc.tenLopHoc
+                                            </b>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <div class="form-inline">
+                                            @Html.DisplayName("Khoa: ")
+                                            <b style="margin-left:95px">
+                                                @Model.tbKhoa.tenKhoa
+                                            </b>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        @Html.DisplayName("Email: ")
+                                        <span>
+                                            @Html.EditorFor(model => model.emailSV, new { htmlAttributes = new { @required = "required", id = "emailSV" } })
+                                            @Html.ValidationMessageFor(model => model.emailSV, "", new { @class = "text-danger" })
+                                        </span>
+                                    </div>
+                                    <div class="input-field col s12">
+                                        @Html.DisplayName("Số điện thoại: ")
+                                        <span>
+                                            @Html.EditorFor(model => model.phoneSV, new { htmlAttributes = new { required = "required", id = "phoneSV", @maxlength = "18", @minlength = "10" } })
+                                            @Html.ValidationMessageFor(model => model.phoneSV, "", new { @class = "text-danger" })
+
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    @*<input type="hidden" id="event-status" name="status">*@
+                                    @Html.HiddenFor(model => model.idSinhVien)
+                                    @Html.HiddenFor(model=>model.maSV)
+                                    @Html.HiddenFor(model=>model.tenSV)
+                                    @Html.HiddenFor(model=>model.ngaySinhSV)
+                                    @Html.HiddenFor(model=>model.idKhoa)
+                                    @Html.HiddenFor(model=>model.idLopHoc)
+                                    @*<input type="hidden" name="action" value="add">*@
+
+                                    <div class="input-field col s12 m6">
+                                        <button type="submit" id="save-btn" class="full-btn btn btn-warning waves-light waves-effect"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa thông tin</button>
+                                    </div>
+
+                                    <div class="input-field col s12 m6">
+                                        <a href="#" class="full-btn btn btn-danger waves-light waves-effect"><i class="fa fa-times" aria-hidden="true"></i> Huỷ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <!--RIGHT SECTION-->
+
+    </div>
+</section>

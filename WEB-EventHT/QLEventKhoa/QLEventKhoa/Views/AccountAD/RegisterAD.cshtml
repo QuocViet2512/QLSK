@@ -1,0 +1,92 @@
+﻿@model QLEventKhoa.ViewModels.DangKyADViewModels
+@{
+    ViewBag.Title = "Tạo admin mới";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+
+    <h1 style="text-align:center"><b>Thêm người quản lý</b></h1>
+    <ol class="breadcrumb" style="margin-right:15px">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li><a href="@Url.Action("RegisterAD","HomeAD")"><i></i>Thêm quản lý</a></li>
+    </ol>
+</section>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <div class="register-logo">
+    </div>
+    <div class="register-box-body">
+
+        @using (Html.BeginForm("RegisterAD", "AccountAD", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group has-feedback">
+                <label>Tên đăng nhập của admin </label>
+                @Html.EditorFor(model => model.userAdmin, new { htmlAttributes = new { @class = "form-control", placeholder = "Tên đăng nhập tối đa 10 ký tự", required = "required",@maxlength="10" } })
+                @Html.ValidationMessageFor(model => model.userAdmin, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group has-feedback">
+                <label>Email của admin </label>
+                @Html.EditorFor(model => model.emailAD, new { htmlAttributes = new { @class = "form-control", placeholder = "Email của admin", required = "required", type = "email" } })
+                @Html.ValidationMessageFor(model => model.emailAD, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label>Loại quản lý </label>
+                @Html.DropDownListFor(model => model.idloaiql, new SelectList(Model.listLoaiAD, "idLoaiAD", "tenLoaiAD"), "Vui lòng chọn loại quản lý", htmlAttributes: new { @class = "form-control", required = "required" })
+                @Html.ValidationMessageFor(model => model.idloaiql, "", new { @class = "text-danger" })
+
+            </div><!-- /.form-group -->
+
+            <div class="form-group has-feedback">
+                <label>Nhập mật khẩu </label>
+                @Html.EditorFor(model => model.passAdmin, new { htmlAttributes = new { @class = "form-control", placeholder = "Vui lòng nhập mật khẩu tối thiểu 6 ký tự 1 hoa 1 thường 1 số", required = "required", @minlength = "6" } })
+                @Html.ValidationMessageFor(model => model.passAdmin, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group has-feedback">
+                <label>Nhập lại mật khẩu</label>
+                @Html.EditorFor(model => model.rePassword, new { htmlAttributes = new { @class = "form-control", placeholder = "Vui lòng nhập lại mật khẩu", required = "required", @minlength = "6" } })
+                @Html.ValidationMessageFor(model => model.rePassword, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="row">
+                <center>
+                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" style="font-weight:bold;width:200px">
+                        Xác nhận tạo tài khoản
+                    </button>
+                    <button type="reset" class="btn btn-danger" style="font-weight:bold;width:200px;margin-left:5px">Hủy thao tác</button>
+                </center>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <center>
+                                <h3 class="modal-title" id="exampleModalLabel" style="font-weight:bold">Xác nhận tạo tài khoản</h3>
+                            </center>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+
+                        </div>
+                        <div class="modal-footer">
+                            <center>
+                                <button type="submit" style="font-weight:bold;width:135px" class="btn btn-success">Tạo tài khoản</button>
+                                <button type="button" style="font-weight:bold;width:135px" class="btn btn-danger" data-dismiss="modal">Hủy</button>
+                            </center>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div><!-- /.form-box -->
+</section><!-- /.content -->

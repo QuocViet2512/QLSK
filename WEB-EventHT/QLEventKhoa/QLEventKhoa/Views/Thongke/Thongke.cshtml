@@ -1,0 +1,576 @@
+﻿@model QLEventKhoa.ViewModels.Thongketop10
+@{
+    ViewBag.Title = "Thongke";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+</head>
+<style>
+
+    tr:hover {
+        background-color: mistyrose;
+    }
+
+    .back_button {
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        background-color: transparent;
+    }
+
+        .back_button button:hover {
+            background-color: forestgreen;
+        }
+
+        .back_button button::selection {
+            border-color: black;
+        }
+
+    .title-view {
+        text-align: center;
+        background-color: transparent;
+    }
+
+        .title-view h1 {
+            font-size: 50px;
+            font-weight: 900;
+            color: purple;
+        }
+
+    .loader {
+        display: none;
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        top: calc(50% - 32px);
+        left: calc(50% - 32px);
+        border-radius: 50%;
+        perspective: 800px;
+    }
+
+    .inner {
+        position: absolute;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+    }
+
+        .inner.one {
+            left: 0%;
+            top: 0%;
+            animation: rotate-one 1s linear infinite;
+            border-bottom: 3px solid #EFEFFA;
+        }
+
+        .inner.two {
+            right: 0%;
+            top: 0%;
+            animation: rotate-two 1s linear infinite;
+            border-right: 3px solid #EFEFFA;
+        }
+
+        .inner.three {
+            right: 0%;
+            bottom: 0%;
+            animation: rotate-three 1s linear infinite;
+            border-top: 3px solid #EFEFFA;
+        }
+
+    @@keyframes rotate-one {
+        0% {
+            transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg);
+            border-color: greenyellow;
+            border-width: 5px;
+        }
+
+        100% {
+            transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg);
+            border-color: lightpink;
+            border-width: 10px;
+        }
+    }
+
+    @@keyframes rotate-two {
+        0% {
+            transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg);
+            border-color: blue;
+            border-width: 10px;
+        }
+
+        100% {
+            transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg);
+            border-color: orange;
+            border-width: 5px;
+        }
+    }
+
+    @@keyframes rotate-three {
+
+        0% {
+            transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg);
+            border-color: red;
+            border-width: 5px;
+        }
+
+        100% {
+            transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg);
+            border-color: yellow;
+            border-width: 10px;
+        }
+    }
+</style>
+<section class="content">
+    <div class="container-fluid" style="border-radius:10px" id="bg">
+        <!-- Small boxes (Stat box) -->
+        <div id="menu_content">
+            <div class="title-view"><h1>HÃY XEM CÓ GÌ ?</h1></div>
+            <div style=" display:flex;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:100px">
+
+                <div class="col-lg-5 col-8">
+                    <!-- small box -->
+                    <div class="small-box" style="background-color:deepskyblue;border-radius:10px;height:200px">
+                        <div class="inner">
+                            <h1 style="font-weight:bold">TOP 10 Sự kiện</h1>
+
+                            <h4 style="font-size:22px">Tham gia nhiều nhất</h4>
+                        </div>
+                        <div class="icon">
+                            <i class="ion-person-add "></i>
+                        </div>
+                        <a href="#" onclick="showtable(1)" class="small-box-footer" style="position:absolute;bottom:0;left:0;width:100%">Xem thông tin  <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+                <div class="col-lg-5 col-8">
+                    <!-- small box -->
+                    <div class="small-box" style="background-color:greenyellow;border-radius:10px;height:200px">
+                        <div class="inner">
+                            <h1 style="font-weight:bold">TOP 10 LỚP HỌC</h1>
+
+                            <h4 style="font-size:22px">Tham gia sôi nổi nhất</h4>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <a href="#" onclick="showtable(2)" class="small-box-footer" style="position:absolute;bottom:0;left:0;width:100%">Xem thông tin  <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+                <div class="col-lg-5 col-8">
+                    <!-- small box -->
+                    <div class="small-box" style="background-color:salmon;border-radius:10px;height:200px">
+                        <div class="inner">
+                            <h1 style="font-weight:bold">TOP 10 SINH VIÊN</h1>
+
+                            <h4 style="font-size:20px">Tiêu biểu trong tham gia hoạt động </h4>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <a href="#" onclick="showtable(3)" class="small-box-footer" style="position:absolute;bottom:0;left:0;width:100%">Xem thông tin  <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+
+                <div class="col-lg-5 col-8">
+                    <!-- small box -->
+                    <div class="small-box" style="background-color:orange;border-radius:10px;height:200px">
+                        <div class="inner">
+                            <h1 style="font-weight:bold">TOP 10 KHOA</h1>
+
+                            <h4 style="font-size:22px">Có nhiều sự kiện nhất </h4>
+                        </div>
+                        <div class="icon">
+                            <i class="ion-person-add "></i>
+                        </div>
+                        <a href="#" onclick="showtable(4)" class="small-box-footer" style="position:absolute;bottom:0;left:0;width:100%">Xem thông tin  <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <!-- ./col -->
+            </div>
+
+        </div>
+        <!-- /.row -->
+        <!-- Main row -->
+        <!-- /.row (main row) -->
+        <!--5 event tham gia nhieu nhat-->
+        <div id="tb_1" class="box" style="background-color:transparent;border:none ; display:none ">
+            <h1 style="text-align:center">TOP 10: <text style="color:salmon">SỰ KIỆN ĐƯỢC THAM GIA NHIỀU NHẤT</text> </h1>
+            <table style=" width:100%">
+                <thead style="background-color:tomato;height:40px">
+                    <tr>
+                        <th style=" border-top-left-radius:10px;text-align:center;width:60px">#</th>
+                        <th style="text-align:center">Mã tham gia </th>
+                        <th style="text-align:center">Số lượng tham gia </th>
+                        <th style="text-align:center">Tên sự kiện</th>
+                        <th style="text-align:center">Trạng thái</th>
+                        <th style=" border-top-right-radius:10px;text-align:center">Xem chi tiet</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index_tb1 = 1;
+                        foreach (var item in Model.evthamgia().OrderByDescending(p => p.thamgia).Take(10))
+                        {
+                            if (index_tb1 == 1)
+                            {
+                                <tr style="height:60px;background-color:salmon">
+                                    <td style="text-align:center"><b>Top @index_tb1</b></td>
+                                    <td style="text-align:center">@item.mathamgia</td>
+                                    <td style="text-align:center">@item.thamgia / @item.tong</td>
+                                    <td style="text-align:center">@item.evname</td>
+                                    <td style="text-align:center">@item.trangthai</td>
+                                    <td style="text-align:center"><a href="@Url.Action("DanhSachthamgia","QLEvent", new {id=item.evid})"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb1 == 2)
+                            {
+                                <tr style="height:50px;background-color:lightsalmon">
+                                    <td style="text-align:center"><b>Top @index_tb1</b></td>
+                                    <td style="text-align:center">@item.mathamgia</td>
+                                    <td style="text-align:center">@item.thamgia / @item.tong</td>
+                                    <td style="text-align:center">@item.evname</td>
+                                    <td style="text-align:center">@item.trangthai</td>
+                                    <td style="text-align:center"><a href="@Url.Action("DanhSachthamgia","QLEvent", new {id=item.evid})"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb1 == 3)
+                            {
+                                <tr style="height:40px;background-color:lightpink">
+                                    <td style="text-align:center"><b>Top @index_tb1</b></td>
+                                    <td style="text-align:center">@item.mathamgia</td>
+                                    <td style="text-align:center">@item.thamgia / @item.tong</td>
+                                    <td style="text-align:center">@item.evname</td>
+                                    <td style="text-align:center">@item.trangthai</td>
+                                    <td style="text-align:center"><a href="@Url.Action("DanhSachthamgia","QLEvent", new {id=item.evid})"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr style="height:40px;background-color:lightgoldenrodyellow">
+                                    <td style="text-align:center">@index_tb1</td>
+                                    <td style="text-align:center">@item.mathamgia</td>
+                                    <td style="text-align:center">@item.thamgia / @item.tong</td>
+                                    <td style="text-align:center">@item.evname</td>
+                                    <td style="text-align:center">@item.trangthai</td>
+                                    <td style="text-align:center"><a href="@Url.Action("DanhSachthamgia","QLEvent", new {id=item.evid})"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            index_tb1++;
+                        }
+                        if (index_tb1 == 0)
+                        {
+                            <tr> <td colspan="6" style="text-align:center;color:grey"><b>Không có dữ liệu nào để hiển thị</b></td></tr>}
+                    }
+                </tbody>
+                <tfoot>
+                    <tr style="background-color:tomato;height:20px">
+                        <td style="border-bottom-left-radius:10px" colspan="5"></td>
+                        <td style="border-bottom-right-radius:10px"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="back_button" ><button onclick="back(1)" class="btn btn-danger">Quay về trang chủ</button></div>
+        </div><!-- /.box -->
+        <!--5 lop tham gia soi noi nhat-->
+        <div id="tb_2" class="box" style="background-color:transparent;border:none ; display:none ">
+            <h1 style="text-align:center">TOP 10: <text style="color:salmon">LỚP THAM GIA SỰ KIỆN SÔI NỔI</text> </h1>
+            <table style=" width:100%">
+                <thead style="background-color:tomato;height:40px">
+                    <tr>
+                        <th style=" border-top-left-radius:10px;text-align:center;width:60px">#</th>
+                        <th style="text-align:center">Tên lớp </th>
+                        <th style="text-align:center">Khoa </th>
+                        <th style="text-align:center;width:150px">Số sự kiện tham gia</th>
+                        <th style="text-align:center">Niên khóa</th>
+                        <th style="text-align:center">Trạng thái</th>
+                        <th style=" border-top-right-radius:10px;text-align:center">Xem chi tiet</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index_tb2 = 1;
+                        foreach (var item in Model.classjoin().OrderByDescending(p => p.evjoincount).Take(10))
+                        {
+                            if (index_tb2 == 1)
+                            {
+                                <tr style="height:60px;background-color:salmon">
+                                    <td style="text-align:center"><b>Top @index_tb2</b></td>
+                                    <td style="text-align:center">@item.classname</td>
+                                    <td style="text-align:center">@item.faculty</td>
+                                    <td style="text-align:center">@item.evjoincount</td>
+                                    <td style="text-align:center">@item.schoolyear</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("IndexLopHocSV","QLLopHocSV")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb2 == 2)
+                            {
+                                <tr style="height:50px;background-color:lightsalmon">
+                                    <td style="text-align:center"><b>Top @index_tb2</b></td>
+                                    <td style="text-align:center">@item.classname</td>
+                                    <td style="text-align:center">@item.faculty</td>
+                                    <td style="text-align:center">@item.evjoincount</td>
+                                    <td style="text-align:center">@item.schoolyear</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("IndexLopHocSV","QLLopHocSV")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb2 == 3)
+                            {
+                                <tr style="height:40px;background-color:lightpink">
+                                    <td style="text-align:center"><b>Top @index_tb2</b></td>
+                                    <td style="text-align:center">@item.classname</td>
+                                    <td style="text-align:center">@item.faculty</td>
+                                    <td style="text-align:center">@item.evjoincount</td>
+                                    <td style="text-align:center">@item.schoolyear</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("IndexLopHocSV","QLLopHocSV")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr style="height:40px;background-color:lightgoldenrodyellow">
+                                    <td style="text-align:center"> @index_tb2</td>
+                                    <td style="text-align:center">@item.classname</td>
+                                    <td style="text-align:center">@item.faculty</td>
+                                    <td style="text-align:center">@item.evjoincount</td>
+                                    <td style="text-align:center">@item.schoolyear</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("IndexLopHocSV","QLLopHocSV")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            index_tb2++;
+                        }
+                        if (index_tb2 == 0)
+                        {
+                            <tr> <td colspan="6" style="text-align:center;color:grey"><b>Không có dữ liệu nào để hiển thị</b></td></tr>}
+                    }
+                </tbody>
+                <tfoot>
+                    <tr style="background-color:tomato;height:20px">
+                        <td style="border-bottom-left-radius:10px" colspan="6"></td>
+                        <td style="border-bottom-right-radius:10px"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="back_button" ><button onclick="back(2)" class="btn btn-danger">Quay về trang chủ</button></div>
+        </div><!-- /.box -->
+        <!--5 khoa co nhieu suw kien nhat-->
+        <div id="tb_3" class="box" style="background-color:transparent;border:none ; display:none ">
+            <h1 style="text-align:center">TOP 10: <text style="color:salmon">SINH VIÊN TIÊU BIỂU</text> </h1>
+            <table style=" width:100%">
+                <thead style="background-color:tomato;height:40px">
+                    <tr>
+                        <th style=" border-top-left-radius:10px;text-align:center;width:60px">#</th>
+                        <th style="text-align:center">Tên sinh viên </th>
+                        <th style="text-align:center">Mã sinh viên </th>
+                        <th style="text-align:center">Lớp</th>
+                        <th style="text-align:center">Số lần tham gia sự kiện</th>
+                        <th style="text-align:center">Trạng thái</th>
+                        <th style=" border-top-right-radius:10px;text-align:center">Xem chi tiet</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index_tb3 = 1;
+                        foreach (var item in Model.topstjoin().OrderByDescending(p => p.sjoin).Take(10))
+                        {
+
+                            if (index_tb3 == 1)
+                            {
+                                <tr style="height:60px;background-color:salmon">
+                                    <td style="text-align:center"><b>Top @index_tb3</b></td>
+                                    <td style="text-align:center">@item.sname</td>
+                                    <td style="text-align:center">@item.scode</td>
+                                    <td style="text-align:center">@item.sclass</td>
+                                    <td style="text-align:center">@item.sjoin</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("indexlophocsv","QLlophocsv")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb3 == 2)
+                            {
+                                <tr style="height:50px;background-color:lightsalmon">
+                                    <td style="text-align:center"><b>Top @index_tb3</b></td>
+                                    <td style="text-align:center">@item.sname</td>
+                                    <td style="text-align:center">@item.scode</td>
+                                    <td style="text-align:center">@item.sclass</td>
+                                    <td style="text-align:center">@item.sjoin</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("indexlophocsv","QLlophocsv")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb3 == 3)
+                            {
+                                <tr style="height:40px;background-color:lightpink">
+                                    <td style="text-align:center"><b>Top @index_tb3</b></td>
+                                    <td style="text-align:center">@item.sname</td>
+                                    <td style="text-align:center">@item.scode</td>
+                                    <td style="text-align:center">@item.sclass</td>
+                                    <td style="text-align:center">@item.sjoin</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("indexlophocsv","QLlophocsv")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr style="height:40px;background-color:lightgoldenrodyellow">
+                                    <td style="text-align:center"> @index_tb3</td>
+                                    <td style="text-align:center">@item.sname</td>
+                                    <td style="text-align:center">@item.scode</td>
+                                    <td style="text-align:center">@item.sclass</td>
+                                    <td style="text-align:center">@item.sjoin</td>
+                                    <td style="text-align:center">@item.status</td>
+                                    <td style="text-align:center"><a href="@Url.Action("indexlophocsv","QLlophocsv")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            index_tb3++;
+                        }
+                        if (index_tb3 == 0)
+                        {
+                            <tr> <td colspan="6" style="text-align:center;color:grey"><b>Không có dữ liệu nào để hiển thị</b></td></tr>}
+                    }
+
+                </tbody>
+                <tfoot>
+                    <tr style="background-color:tomato;height:20px">
+                        <td style="border-bottom-left-radius:10px" colspan="6"></td>
+                        <td style="border-bottom-right-radius:10px"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="back_button" ><button onclick="back(3)" class="btn btn-danger">Quay về trang chủ</button></div>
+        </div><!-- /.box -->
+        <!--5 event duoc quan tam nhat-->
+        <div id="tb_4" class="box" style="background-color:transparent;border:none ; display:none ">
+            <h1 style="text-align:center">TOP 10: <text style="color:green">KHOA CÓ NHIỀU SỰ KIỆN NHẤT</text> </h1>
+            <table style=" width:100%">
+                <thead style="background-color:tomato;height:40px">
+                    <tr>
+                        <th style=" border-top-left-radius:10px;text-align:center;width:60px">#</th>
+                        <th style="text-align:center">Tên khoa </th>
+                        <th style="text-align:center">Mã khoa </th>
+                        <th style="text-align:center">Số lượng sự kiện</th>
+                        <th style="text-align:center">Trạng thái</th>
+                        <th style=" border-top-right-radius:10px;text-align:center">Xem chi tiết</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int index_tb4 = 1;
+                        foreach (var item in Model.topfaculties().OrderByDescending(p => p.fevcount).Take(10))
+                        {
+
+                            if (index_tb4 == 1)
+                            {
+                                <tr style="height:60px;background-color:salmon">
+                                    <td style="text-align:center"><b>Top @index_tb4</b></td>
+                                    <td style="text-align:center">@item.fname</td>
+                                    <td style="text-align:center">@item.fcode</td>
+                                    <td style="text-align:center">@item.fevcount</td>
+                                    <td style="text-align:center">@item.status </td>
+                                    <td style="text-align:center"><a href="@Url.Action("listkhoa","QLkhoa")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb4 == 2)
+                            {
+                                <tr style="height:50px;background-color:lightsalmon">
+                                    <td style="text-align:center"><b>Top @index_tb4</b></td>
+                                    <td style="text-align:center">@item.fname</td>
+                                    <td style="text-align:center">@item.fcode</td>
+                                    <td style="text-align:center">@item.fevcount</td>
+                                    <td style="text-align:center">@item.status </td>
+                                    <td style="text-align:center"><a href="@Url.Action("listkhoa","QLkhoa")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else if (index_tb4 == 3)
+                            {
+                                <tr style="height:40px;background-color:lightpink">
+                                    <td style="text-align:center"><b>Top @index_tb4</b></td>
+                                    <td style="text-align:center">@item.fname</td>
+                                    <td style="text-align:center">@item.fcode</td>
+                                    <td style="text-align:center">@item.fevcount</td>
+                                    <td style="text-align:center">@item.status </td>
+                                    <td style="text-align:center"><a href="@Url.Action("listkhoa","QLkhoa")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            else
+                            {
+                                <tr style="height:40px;background-color:lightgoldenrodyellow">
+                                    <td style="text-align:center"> @index_tb4</td>
+                                    <td style="text-align:center">@item.fname</td>
+                                    <td style="text-align:center">@item.fcode</td>
+                                    <td style="text-align:center">@item.fevcount</td>
+                                    <td style="text-align:center">@item.status </td>
+                                    <td style="text-align:center"><a href="@Url.Action("listkhoa","QLkhoa")"><i>Xem chi tiet ></i></a></td>
+                                </tr>
+                            }
+                            index_tb4++;
+                        }
+                        if (index_tb4 == 0)
+                        {
+                            <tr> <td colspan="6" style="text-align:center;color:grey"><b>Không có dữ liệu nào để hiển thị</b></td></tr>}
+                    }
+                </tbody>
+                <tfoot>
+                    <tr style="background-color:tomato;height:20px">
+                        <td style="border-bottom-left-radius:10px" colspan="5"></td>
+                        <td style="border-bottom-right-radius:10px"></td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="back_button" ><button onclick="back(4)" class="btn btn-danger">Quay về trang chủ</button></div>
+        </div><!-- /.box -->
+    </div><!-- /.container-fluid -->
+    <!--loading-->
+    <div style="text-align:center">
+
+        <div class="loader" id="loading">
+            <div class="inner one"></div>
+            <div class="inner two"></div>
+            <div class="inner three"></div>
+        </div>
+    </div>
+
+    <!--end-loading-->
+</section>
+<script>
+    var bg = document.getElementById("bg");
+    function showtable(id) {
+        document.getElementById("menu_content").style.display = "none";
+        document.getElementById("loading").style.display = "block";
+        $("#tb_" + id).fadeIn(1000);
+        $("#loading").fadeOut(1000);
+        if (id == 1) {
+            bg.style.backgroundColor = "skyblue";
+        }
+        else if (id == 2) {
+            bg.style.backgroundColor = "greenyellow";
+        }
+        else if (id == 3) {
+            bg.style.backgroundColor = "mediumpurple ";
+        }
+        else {
+            bg.style.backgroundColor = "orange";
+        }
+    }
+
+    function back(id) {
+        document.getElementById("tb_" + id).style.display = "none";
+        document.getElementById("loading").style.display = "block";
+        $("#menu_content").fadeIn(1000);
+        $("#loading").fadeOut(1000);
+        bg.style.backgroundColor = "transparent";
+    }
+
+</script>
+

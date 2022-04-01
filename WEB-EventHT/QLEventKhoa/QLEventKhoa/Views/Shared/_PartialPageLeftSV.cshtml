@@ -1,0 +1,69 @@
+﻿@using QLEventKhoa.Models
+
+@{
+    tbSinhVien sv = (tbSinhVien)Session["SV"];
+}
+
+<div class="db-l db-2-com">
+    <h4>Thông tin cá nhân</h4>
+    <div class="db-l-2 info-fix-top">
+        <ul>
+            @if (Session["LogIn"] != null)
+            {
+            <li>
+
+                <p>@sv.tenSV</p>
+                <p><i class="fa fa-th-large"></i>MSSV: @sv.maSV</p>
+                <p><i class="fa fa-th-large"></i> @sv.tbLopHoc.tenLopHoc</p>
+                <p><i class="fa fa-envelope"></i> @sv.emailSV</p>
+                <p><i class="fa fa-th-large"></i> @sv.tbKhoa.tenKhoa</p>
+            </li>
+            }
+            else
+            {
+            <li>
+                <p>Họ tên:</p>
+                <p><i class="fa fa-th-large"></i>MSSV: </p>
+                <p><i class="fa fa-th-large"></i>lớp: </p>
+                <p><i class="fa fa-envelope"></i>SĐT: </p>
+                <p><i class="fa fa-th-large"></i>Khoa: </p>
+            </li>
+            }
+
+        </ul>
+    </div>
+
+    <div class="db-l-2 ">
+        <ul>
+            <li>
+                <a href="@Url.Action("DSDangKy","HomeSV")"><i class="fa fa-calendar" aria-hidden="true"></i> Sự kiện tham gia</a>
+            </li>
+            <li>
+                <a href="@Url.Action("DSDangKyOld","HomeSV")"><i class="fa fa-check" aria-hidden="true"></i> Sự kiện đã từng tham gia</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ProfileSV","AccountSV")"><i class="fa fa-user" aria-hidden="true"></i>Thông tin tài khoản</a>
+            </li>
+            <li>
+                <a href="@Url.Action("ChangePass","AccountSV")"><i class="fa fa-shield" aria-hidden="true"></i>Đổi mật khẩu</a>
+            </li>
+            <li>
+                <a href="@Url.Action("DanhSachLienHe","HomeSV")"><i class="fa  fa-archive" aria-hidden="true"></i>Danh sách liên hệ</a>
+            </li>
+
+            @{tbSinhVien LT = Session["SV"] as tbSinhVien; }
+            @if (Session["LogIn"] != null)
+            {
+                if (LT.isLopTruong == true)
+                {
+                    <li>
+                        <a href="@Url.Action("LopTruong", "HomeSV")"><i class="fa  fa-archive" aria-hidden="true"></i>Danh sách tham gia của lớp</a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("SuggestEventView", "SuggestEvent")"><i class="fa  fa-archive" aria-hidden="true"></i>Đề xuất sự kiện</a>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

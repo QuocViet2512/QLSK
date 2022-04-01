@@ -1,0 +1,31 @@
+﻿@model QLEventKhoa.Models.tbTagEvent
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm("EditTAG", "QLTagEvent", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model=>model.idTagEvent)
+        <center><h4>Chỉnh sửa tag sự kiện mới</h4></center>
+
+        <div class="form-group">
+            <label>Tên tag sự kiện</label>
+            @Html.EditorFor(model => model.tenTagEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên tag sự kiện....", required = "required", @maxlength = "15", @minlength = "5" } })
+            @Html.ValidationMessageFor(model => model.tenTagEvent, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" onlick="EditTAG();">Lưu thay đổi</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        </div>
+    }
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

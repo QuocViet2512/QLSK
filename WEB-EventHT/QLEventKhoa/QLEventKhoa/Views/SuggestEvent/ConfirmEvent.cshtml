@@ -1,0 +1,143 @@
+﻿@model QLEventKhoa.Models.tbSuKien
+@{
+    ViewBag.Title = "editEvent";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+
+}
+
+
+
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+
+<section class="content" style="padding:5% 15%;margin-bottom:5%">
+    <div class="row">
+        <div class="col-md-12">
+                <div class="box box-primary">
+                    <div class="box box-header with-boder">
+                    </div>
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.idEvent)
+                    @Html.HiddenFor(model => model.imageEvent)
+                    <div class="box-body">
+
+                        <div class="form-group">
+                            <label>Tên sự kiện</label>
+                            @*<input type="text" class="form-control" id="TenEvent" placeholder="Tên sự kiện">*@
+                            @Html.EditorFor(model => model.tenEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Tên sự kiện", required = "required", maxlength = "255", @readonly = "readonly", style = "font-weight:bold" } })
+
+                        </div>
+
+                        <div class="form-group">
+                            <label>Địa điểm</label>
+                            @Html.EditorFor(model => model.noiToChuc, new { htmlAttributes = new { @class = "form-control", placeholder = "Nơi tổ chức sự kiện", required = "required", maxlength = "100", @readonly = "readonly", style = "font-weight:bold" } })
+
+                        </div>
+                        <div class="form-group">
+                            <label>Số lượng sinh viên</label>
+                            @Html.EditorFor(model => model.soLuongThamGia, new { htmlAttributes = new { @class = "form-control", @type = "number", required = "required", @readonly = "readonly", style = "font-weight:bold" } })
+
+
+
+                        </div>
+                        <div class="form-group">
+                            <label>Khoa</label>
+
+                            @*@Html.DropDownListFor(model => model.maKhoa, new SelectList(Model.listKhoa, "idKhoa", "tenKhoa"), "Vui lòng chọn khoa", htmlAttributes: new { @class = "form-control" })*@
+                            @Html.EditorFor(model => model.tbKhoa.tenKhoa,  new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", style = "font-weight:bold" } })
+
+           
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Loại sự kiện</label>
+
+                            @Html.EditorFor(model => model.tbLoaiEvent.tenLoaiEvent,new{ htmlAttributes= new { @class = "form-control", @readonly = "readonly", style = "font-weight:bold" } })
+
+                        </div>
+
+                       
+
+                        <div class="form-group">
+                            <label>Chi phí tổ chức (Không bắt buộc)</label>
+                            @Html.EditorFor(model => model.chiPhiEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Chi phí sự kiện", @type = "number", @readonly = "readonly", style = "font-weight:bold" } })
+           
+                        </div>
+
+                        <div class="form-group">
+                            <label>Nhà tổ chức</label>
+
+                            @Html.EditorFor(model => model.tbNhaToChuc.tenNTC, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", style = "font-weight:bold" } })
+
+  
+                        </div><!-- /.form-group -->
+
+                        <div class="row" style="width:600px">
+                            <div class="col-md-6">
+                                <div class="form-group" style="width: 250px;font-weight: bold">
+                                    <label>Ngày và thời gian bắt đầu:</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div>
+                                        @Html.EditorFor(model => model.ngayBatDau, new { htmlAttributes = new { @class = "form-control",enable="false", type = "datetime-local", required = "required", @readonly = "readonly", style = "font-weight:bold" } })
+                            
+                                    </div><!-- /.input group -->
+                                </div><!-- /.form group -->
+                            </div>
+
+                            <div class="col-md-6">
+                                <div class="form-group" style="width: 350px;float: left">
+                                    <label>Mã tham gia sự kiện</label>
+
+                                    <div class="input-group input-group-sm" style="font-weight: bold">
+                                       
+                                        @Html.EditorFor(model => model.maThamGia, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", id = "rand", placeholder = "Mã tham gia", maxlength = "5", disable = "disable", style = "font-weight:bold" } })   
+                                        
+                                    </div><!-- /input-group -->
+                                </div>
+                            </div>
+
+                          
+                        </div><!--Row mã sự kiện ngày event -->
+                       
+                        <div class="form-group">
+                            <!-- hình ảnh -->
+                            <label for="BannerEvent">Banner sự kiện</label>
+             
+                            <div>
+                                <img id="banner" src="@Url.Content("~/images/uploads/"+Model.imageEvent)" style="width:100%;height:500px;border-radius:15px" />
+                            </div>
+                        </div>
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <label for="BannerEvent">Nội dung sự kiện</label>
+
+                            </div>
+                            <div class="box-body pad">
+                                @Html.Raw(@Model.noiDungEvent)              
+                            </div>
+
+                        </div>
+                    </div><!-- /.box -->
+
+                    <div class="box-footer"style="margin-top:100px">
+                       
+                                <div style="display:flex;width:100%;justify-content:center;align-items:center">
+                                    
+                                    <button type="button"  class="btn btn-success" onclick="GTIndexAction()" style="width: 40%;font-weight:bold">Đi tới trang chủ sự kiện</button>
+                                    
+                                </div>                     
+                    </div>
+                </div><!-- /.box-body -->
+            
+        </div><!-- /.col-->
+    </div><!-- ./row -->
+</section><!-- /.content -->
+<script>
+    function GTIndexAction() {
+        location.href="/HomeSV/IndexSV"
+    }
+</script>

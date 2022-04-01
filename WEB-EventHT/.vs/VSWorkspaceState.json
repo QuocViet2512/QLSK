@@ -1,0 +1,17 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\QLEventKhoa",
+    "\\QLEventKhoa\\QLEventKhoa",
+    "\\QLEventKhoa\\QLEventKhoa\\Controllers",
+    "\\QLEventKhoa\\QLEventKhoa\\Controllers\\Admin",
+    "\\QLEventKhoa\\QLEventKhoa\\Controllers\\SinhVien",
+    "\\QLEventKhoa\\QLEventKhoa\\Views",
+    "\\QLEventKhoa\\QLEventKhoa\\Views\\HomeSV",
+    "\\QLEventKhoa\\QLEventKhoa\\Views\\QLEvent",
+    "\\QLEventKhoa\\QLEventKhoa\\Views\\QLLoaiEvent",
+    "\\QLEventKhoa\\QLEventKhoa\\Views\\Shared"
+  ],
+  "SelectedNode": "\\QLEventKhoa\\QLEventKhoa\\Views\\Shared\\_LayoutAdmin.cshtml",
+  "PreviewInSolutionExplorer": false
+}

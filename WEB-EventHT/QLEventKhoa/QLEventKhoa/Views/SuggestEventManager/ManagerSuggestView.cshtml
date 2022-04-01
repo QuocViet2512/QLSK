@@ -1,0 +1,57 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbSuKien>
+@{
+    ViewBag.Title = "ManagerSuggestView";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div id="tb_4" class="box" style="background-color:transparent;">
+    <h1 style="text-align:center"><text style="color:green">Sự kiện do sinh viên đề xuất</text> </h1>
+    <table style=" width:100%;border:unset">
+        <thead style="background-color:Highlight;height:40px">
+            <tr>
+                <th style=" border-top-left-radius:10px;text-align:center;width:50px;">#</th>
+                <th style="text-align:center">Banner sự kiện </th>
+                <th style="text-align:center">Tên sự kiện </th>
+                <th style="text-align:center">Số lượng tham gia</th>
+                <th style="text-align:center">ke hoach</th>
+                <th style="text-align:center;border-top-right-radius:10px">Xem chi tiết</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                int index = 1;
+                foreach (var item in Model)
+                {
+
+                    {
+                        <tr style="height:40px;background-color:lightyellow">
+                            <td style="text-align:center;font-weight:bold"> @index</td>
+                            <td style="text-align:center;padding:10px"><img src="~/images/uploads/@item.imageEvent" style="width:170px;height:100px;border-radius:15px"/></td>
+                            <td style="text-align:center">@item.tenEvent</td>
+                            <td style="text-align:center">@item.soLuongThamGia</td>
+                            <td style="text-align:center"><a href="@Url.Action("download","suggesteventmanager",new { filename=item.KeHoach})">@item.KeHoach  </a> </td>
+                            <td style="text-align:center"><a style="button" class="btn btn-info" href="@Url.Action("DetailSuggest","SuggestEventManager",new {id=item.idEvent})"><i>Xem chi tiet ></i></a></td>
+                        </tr>
+                    }
+                    index++;
+                }
+                if (index == 0)
+                {
+                    <tr> <td colspan="6" style="text-align:center;color:grey"><b>Không có dữ liệu nào để hiển thị</b></td></tr>}
+            }
+        </tbody>
+        <tfoot>
+            <tr style="background-color:Highlight;height:20px">
+                <td style="border-bottom-left-radius:10px" colspan="5"></td>
+                <td style="border-bottom-right-radius:10px"></td>
+            </tr>
+        </tfoot>
+    </table>
+    <div style="text-align:center;margin:10px"><button onclick="back()" id="backbt" class="btn btn-danger">Quay về trang chủ</button></div>
+</div><!-- /.box -->
+<script>
+    function back() {
+        location.href = "/HomeAD/IndexAD";
+    }
+</script>

@@ -1,0 +1,168 @@
+﻿@model QLEventKhoa.Models.tbSuKien
+@using QLEventKhoa.Models
+
+@{
+    /**/
+
+    ViewBag.Title = "Chi tiết sự kiện";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+@{
+    tbSinhVien sv = (tbSinhVien)Session["SV"];
+}
+
+
+<section>
+    <!-- BANNER EVENT -->
+    <div class="rows inner_banner inner_banner_4" style="background-image:url('../../images/uploads/@Model.imageEvent');width:100%">
+        <div class="container">
+            <!-- TIÊU ĐỀ EVENT -->
+            <h2> <span>@Model.tenEvent</span> </h2>
+            <p></p>
+        </div>
+    </div>
+</section>
+
+
+<!--====== TOUR DETAILS - BOOKING ==========-->
+<section>
+    <div class="rows banner_book" id="inner-page-title">
+        <div class="container">
+            <div class="banner_book_1">
+                <ul>
+                    <!-- ĐỊA ĐIỂM -->
+                    <li class="dl1">@Model.noiToChuc</li>
+                    <li class="dl2">Số lượng sinh viên:  @ViewBag.SL/@Model.soLuongThamGia</li>
+                    <li class="dl3">Thời gian: @Model.ngayBatDau.ToString("dd-MM-yyyy HH:mm")</li>
+                    @*<li class=''><a class='accept_button' disabled title='Đăng ký tham gia sự kiện'>Đăng ký</a> </li>*@
+                    <li>
+                        @if (Session["Login"] == null)
+                        {
+                            if (Model.statusEvent == 2 || Model.ngayBatDau <= DateTime.Now || ViewBag.SL == Model.soLuongThamGia)
+                            {
+                                <a href="#" type="button" class="cancel_button" title="Sự kiện đã hết hạn">Đã kết thúc đăng ký</a>
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("LoginSV","AccountSV")" class='accept_button' disabled title='Đăng nhập trước khi tham gia sự kiện'>Đăng ký</a>
+                            }
+                        }
+                        else
+                        {
+                            if (Model.statusEvent == 2 || Model.ngayBatDau <= DateTime.Now || ViewBag.SL == Model.soLuongThamGia)
+                            {
+                                <a href="#" type="button" class="cancel_button" title="Sự kiện đã hết hạn"> Đã kết thúc đăng ký</a>
+                            }
+                            else if (Model.tbThamGiaEvents.FirstOrDefault(p => p.idSinhVien == sv.idSinhVien) != null)
+                            {                          
+                                <a href="#" type="button" class="cancel_button" title="Hủy tham gia sự kiện" id="@Model.idEvent" onclick="HuyThamGiafromDetailSK(this.id);">
+                                   Hủy tham gia sự kiện
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="#" type="button" class="accept_button" title="Đăng ký tham gia sự kiện" id="@Model.idEvent" onclick="ThamGiaSK(this.id);">
+                                    Đăng ký tham gia
+                                </a>
+                            }
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--======DETAILS==========-->
+<section>
+    <div class="rows inn-page-bg com-colo">
+        <div class="container inn-page-con-bg tb-space">
+            <div class="col-md-9">
+                <div class="tour_head1">
+                    <!-- NỘI DUNG SỰ KIỆN -->
+                    <h3>Nội dung sự kiện</h3>
+                    @Html.Raw(Model.noiDungEvent)
+                </div>
+            </div>
+            <div class="col-md-3 tour_r">
+
+                <div class="tour_right tour_incl tour-ri-com">
+                    <h3>Thông tin sự kiện</h3>
+                    <ul>
+                        <!--   -->
+                        <li>Địa điểm : @Model.noiToChuc</li>
+                        <li>Ngày bắt đầu: @Model.ngayBatDau.ToString("dd-MM-yyyy HH:mm")</li>
+                        <li>Số lượng còn :@(Model.soLuongThamGia - ViewBag.SL)</li>
+                        <li><button class="btn btn-info" style="width:100%" onclick="QRcreate()" > Mã QR </button></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h4 class="modal-title">@Model.tenEvent</h4></center>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="view_qrcode" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">MÃ QR SỰ KIỆN @Model.tenEvent</h3>
+                </center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="display:flex;align-items:center;justify-content:center" id="addqrcode">
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+      function ThamGiaSK(id) {
+              $.get("@Url.Action("ThamGiaSK", "HomeSV")/" + id,
+                function (data) {
+                    $('.modal-body').html(data);
+                });
+                $("#myModal").modal("show");
+      }
+
+    function HuyThamGiafromDetailSK(id) {
+              $.get("@Url.Action("HuyThamGiafromDetailSK", "HomeSV")/" + id,
+                function (data) {
+                    $('.modal-body').html(data);
+                });
+                $("#myModal").modal("show");
+    }
+
+    function QRcreate() {
+        var data = (window.location.href);
+        var color = "000000";
+        let qr = 'https://chart.googleapis.com/chart?cht=qr&chs=300x300&chl=' + data + '&chco=' + color;
+        let src = ' <img style="width:300px;height:300px" src="' + qr + '" />';
+        document.getElementById("addqrcode").innerHTML = src;
+        $("#view_qrcode").modal("show");
+    }
+ </script>
+
+
+
+

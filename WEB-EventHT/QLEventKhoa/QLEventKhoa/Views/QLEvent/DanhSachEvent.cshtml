@@ -1,0 +1,130 @@
+﻿@model IEnumerable<QLEventKhoa.ViewModels.DSEventViewModels>
+@{
+    ViewBag.Title = "Danh sách sự kiện";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lý  sự kiện
+
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href=@Url.Action("DanhSachEvent","QLEvent")>Danh sách sự kiện</a></li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <!-- Your Page Content Here -->
+    <!-- Main content -->
+
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="form-group">
+                <div class="form-inline" style="width:100%">
+                    <a href="@Url.Action("addEvent","QLEvent")" class="btn btn-primary" style="font-weight: bold;width: 370px">Tạo sự kiện</a>
+                   
+
+                </div>
+            </div>
+            <div class="box">
+                <div class="box-header">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.DropDownList("selectLoaiKhoa", ViewBag.LoaiKhoa as SelectList, "Chọn khoa", new { @class = "form-control", style = "width:185px;float:right" })
+
+                        @Html.DropDownList("selectLoaiEvent", ViewBag.LoaiEvent as SelectList, "Chọn loại sự kiện", new { @class = "form-control", style = "width:170px;float:right;margin-right:5px" })
+
+                        <span style="float:right;margin-right:5px">
+                            <button type="submit" class="btn btn-primary" style="font-weight:bold" formaction="@Url.Action("Locevent","QLEvent")">Lọc</button>
+                        </span>
+                    }
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                  
+                    <table id="TableLoaiSK" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã tham gia</th>
+                                <th>Tên sự kiện</th>
+                                <th>Số lượng  tham gia</th>
+                                <th>Ngày diễn ra</th>
+                                <th>Poster sự kiện</th>
+                                <th>Tình trạng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int row = 0;}
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@(row += 1)</td>
+                                    <td>@item.maThamGia</td>
+                                    <td>@item.tenEvent</td>
+                                    <td>@item.conlai/@item.soLuongThamGia</td>
+                                    <td>@item.ngayBatDau.ToString("dd-MM-yyyy HH:mm")</td>
+
+                                    <td><img src="~/images/uploads/@item.imageEvent" width="100" height="100"></td>
+                                    <td>@item.tenTrangThai</td>
+                                    <td>
+                                        @*<button type="button" class="btn btn-danger" style="font-weight: bold">Xem & Điều chỉnh</button>*@
+                                        <a href="@Url.Action("editEvent","QLEvent",new { id=item.idEvent})" class="btn btn-danger" style="width:185px;font-weight:bold">Xem và Điều chỉnh</a>
+                                        @if (item.conlai > 0)
+                                        {
+                                            <div style="padding-top:5px">
+                                                <a href="@Url.Action("DanhSachThamGia", "QLEvent", new { id = item.idEvent })" class="btn btn-primary" style="font-weight:bold;width:185px">Xem danh sách tham gia</a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div style="padding-top:10px">
+                                                <center>
+                                                    <button class="btn btn-default" style="font-weight:bold">Chưa có sinh viên tham gia</button>
+                                                </center>
+                                            </div>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã tham gia</th>
+                                <th>Tên sự kiện</th>
+                                <th>Số lượng tham gia</th>
+                                <th>Ngày diễn ra</th>
+                                <th>Poster sự kiện</th>
+                                <th>Tình trạng</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</section><!-- /.content -->
+<script>
+    //datatable
+    $(function () {
+        $('#TableLoaiSK').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+</script>
+
+

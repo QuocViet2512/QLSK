@@ -1,0 +1,351 @@
+﻿@model  QLEventKhoa.ViewModels.DSAdminViewModels
+@{
+    ViewBag.Title = "Danh sách admin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lí admin
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD", "HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("DSAdmin","QLAdmin")">Quản lý danh sách admin</a></li>
+    </ol>
+</section>
+<style>
+    .cover {
+        width: 100%;
+        margin: 0;
+    }
+
+    .data-view {
+        width: 80%;
+        background-color: transparent;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .lable {
+        text-align: right;
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+
+    .input {
+        width: 300px;
+        float: right;
+        border-radius: 10px;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+
+    #success {
+        background: #ff3939;
+    }
+
+    #warning {
+        background: #ff3939;
+    }
+
+    #failure {
+        background: #ff3939;
+    }
+
+    .notify {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 0px;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        background: rgba(0,0,0,.6);
+        overflow: hidden;
+        transition: width .4s, height .4s;
+        border-radius: 15px;
+    }
+
+    #notifyType:before {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .activenoti {
+        height: 50px;
+        width: 60%;
+    }
+
+    .success:before {
+        Content: "Cập nhật thành công!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .warning:before {
+        Content: "Không có gì được cập nhật!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .failure:before {
+        Content: "Cập nhật thất bại, xin vui lòng thử lại !!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="box">
+
+            <div class="box-header">
+                <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="tbThamGiaSK" class="table table-bordered table-hover">
+                    <thead class="alert-info">
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center">Tên đăng nhập</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Loại quản lý</th>
+                            <th class="text-center">Trạng thái </th>
+                            <th style="width:200px" class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int row = 0;
+                            foreach (var item in Model.listAdmin)
+                            {
+                                <tr>
+                                    <td class="text-center" style="width:10px">@(row += 1)</td>
+                                    <td id="tbaduser_@item.idAdmin">@item.userAdmin</td>
+                                    <td id="tbadmail_@item.idAdmin">@item.emailAD</td>
+                                    <td id="tbadtype_@item.idAdmin">@item.tbLoaiAdmin.tenLoaiAD</td>
+                                    @if (item.statusAd == true)
+                                    {
+                                        <td class="text-center"> <b style="color:forestgreen" id="tbadstt_@item.idAdmin"> Đang hoạt động   </b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><b style="color:tomato" id="tbadstt_@item.idAdmin"> Vô hiệu hóa  </b> </td>
+                                    }
+                                    <td class="text-center" style="width:230px">
+                                        <button class="btn btn-danger" data-toggle="modal" data-target="#fade_@item.idAdmin"> Chỉnh sửa </button>
+                                        <button type="button" class="btn btn-success" onclick="reset(@item.idAdmin)"> Đặt lại mật khẩu </button>
+                                        <div class="modal fade" id="fade_@item.idAdmin" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <center>
+                                                            <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">Chỉnh sửa quản lý</h3>
+                                                            <b>@item.userAdmin</b>
+                                                        </center>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="cover">
+                                                            <div class="data-view">
+                                                                <label class="lable"> Tên đăng nhập :</label>
+                                                                <input class="input" id="e_adusername_@item.idAdmin" value="@item.userAdmin" />
+                                                            </div>
+                                                            <div class="data-view">
+                                                                <label class="lable"> Email quản lý :</label>
+                                                                <input class="input" id="e_admail_@item.idAdmin" value="@item.emailAD" />
+                                                            </div>
+                                                            <div class="data-view">
+                                                                <label class="lable">Tên loại admin: </label>
+                                                                <select id="e_adtype_@item.idAdmin" class="input">
+                                                                    @foreach (var item1 in Model.listLoaiAD)
+                                                                    {
+                                                                        if (item.idloaiql == item1.idLoaiAD)
+                                                                        {
+                                                                            <option selected value="@item1.idLoaiAD">@item1.tenLoaiAD</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option value="@item1.idLoaiAD">@item1.tenLoaiAD</option>
+                                                                        }
+
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                            <div class="data-view">
+                                                                <label class="lable">Trạng thái </label>
+                                                                <select id="e_adstt_@item.idAdmin" class="input">
+                                                                    @if (item.statusAd == true)
+                                                                    {
+                                                                        <option value="false">Vô hiệu hóa</option>
+                                                                        <option selected value="true">Kích hoạt</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option selected value="false">Vô hiệu hóa</option>
+                                                                        <option value="true">Kích hoạt</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                                                        <button class="btn btn-success" aria-hidden="true" onclick="edit(@item.idAdmin)">Lưu thay đổi</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tfoot class="alert-info">
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center">Tên đăng nhập</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Loại quản lý</th>
+                            <th class="text-center">Trạng thái </th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+            <div id="clbg_nt" class="notify"><span id="notifyType" class=""></span></div>
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <!-- /.row -->
+</section>
+
+@section scripts{ 
+<script>
+    //datatable
+    $(function () {
+        $('#tbThamGiaSK').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+    });
+
+
+    function edit(id) {
+
+        var e_adusername = document.getElementById("e_adusername_" + id).value;
+        var e_admail = document.getElementById("e_admail_" + id).value;
+        var e_adtype = document.getElementById("e_adtype_" + id).value;
+        var e_adstt = document.getElementById("e_adstt_" + id).value;
+
+        var tbaduser = document.getElementById("tbaduser_" + id);
+        var tbadmail = document.getElementById("tbadmail_" + id);
+        var tbadtype = document.getElementById("tbadtype_" + id);
+        var tbadstt = document.getElementById("tbadstt_" + id);
+
+        const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (e_adusername.length < 5) {
+            alert("Tên đăng nhập phải ít nhất 7 kí tự");
+        }
+        else if (!re.test(e_admail)) {
+            alert("Email không hợp lệ !");
+        }
+        else {
+            $('#fade_' + id).modal("hide");
+            $.ajax({
+                url: '/QLAdmin/EditAD',
+                type: "POST",
+                data: { id, e_adusername, e_admail, e_adtype, e_adstt },
+                success: function (response) {
+                    if (response == "true") {
+                        tbaduser.innerText = e_adusername;
+                        tbadmail.innerText = e_admail;
+                        tbadtype.innerText = $("#e_adtype_" + id + " option:selected").text()
+                        if (tbadstt.innerText == "Đang hoạt động" && e_adstt == "false") {
+                            tbadstt.innerText = "Vô hiệu hóa";
+                            tbadstt.style.color = "tomato";
+                        }
+                        if (tbadstt.innerText == "Vô hiệu hóa" && e_adstt == "true") {
+                            tbadstt.innerText = "Đang hoạt động";
+                            tbadstt.style.color = "forestgreen";
+                        }
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("success");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("success");
+                        }, 2000);
+                    }
+                    else {
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(255,152,60, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("warning");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("warning");
+                        }, 2000);
+                    }
+
+                },
+                error: function (err) {
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+        }
+
+    }
+    function reset(id) {
+        var ten = document.getElementById("tbaduser_" + id);
+        if (confirm("Đặt lại mật khẩu cho: " + ten.innerText) == true) {
+            $.ajax({
+                url: '/QLAdmin/ResetPassAD',
+                type: "POST",
+                data: { id },
+                success: function (response) {
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("success");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("success");
+                    }, 2000);
+                },
+                error: function (err) {
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+        }
+    }
+</script>
+    }
+
+
+

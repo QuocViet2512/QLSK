@@ -1,0 +1,30 @@
+﻿@model QLEventKhoa.Models.tbLoaiEvent
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    @using (Html.BeginForm("editLoaiSK", "QLLoaiEvent", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model=>model.idLoaiEvent)
+        <center><h4>Chỉnh sửa loại sự kiện</h4></center>
+
+        <div class="form-group">
+            <label>Tên khoa</label>
+            @Html.EditorFor(model => model.tenLoaiEvent, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên loại sự kiện....", required = "required", @maxlength = "30", @minlength = "6" } })
+            @Html.ValidationMessageFor(model => model.tenLoaiEvent, "", new { @class = "text-danger" })
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-success" onlick="editLoaiSK();">Chỉnh sửa</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        </div>
+    }
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

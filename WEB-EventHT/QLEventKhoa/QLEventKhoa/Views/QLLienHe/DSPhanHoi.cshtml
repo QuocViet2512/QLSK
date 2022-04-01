@@ -1,0 +1,110 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbLienHe>
+@{
+    ViewBag.Title = "Phản hồi liên hệ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <h1 style="text-align:center">
+        Danh sách phản hồi
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("DSPhanHoi","QLLienHe")">Quản lý danh sách phản hồi</a></li>
+    </ol>
+</section>
+
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12">
+            <div class="box">
+
+                <div class="box-header">
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table class="table table-hover table-danger" id="phanhoi-table">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Tiêu đề liên hệ</th>
+                                <th>MASSV</th>
+                                <th>Tên sinh viên</th>
+                                <th>Email sinh viên</th>
+                                @*<th>Email admin phản hồi </th>*@
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @{int rowNo = 0; }
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+
+                                <td>@(rowNo += 1)</td>
+                                <td>@item.tieuDeLH</td>
+                                <td>@item.maSV</td>
+                                <td>@item.tenSV</td>
+                                <td>@item.emailSV</td>
+                                @*<td>@item.emailAD</td>*@
+                                @if (item.statusLH == true)
+                                {
+                                    <td class="text-center"> <b style="color:forestgreen"> Đã phản hồi  </b></td>
+                                }
+                                else
+                                {
+                                    <td class="text-center"><b style="color:tomato"> Chưa phản hồi </b> </td>
+                                }
+                                <td>
+
+                                    <a href="@Url.Action("PhanHoiLH","QLLienHe",new {id=item.idLienHe })" class="btn btn-success">Phản hồi</a>
+                                </td>
+
+                            </tr>
+                            }
+
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Tiêu đề liên hệ</th>
+                                <th>MASSV</th>
+                                <th>Tên sinh viên</th>
+                                <th>Email sinh viên</th>
+                                @*<th>Email admin phản hồi </th>*@
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+</section><!-- /.content -->
+
+
+
+
+<script>
+    //datatable
+    $(function () {
+        $('#phanhoi-table').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": false,
+
+        });
+    });
+</script>
+

@@ -1,0 +1,315 @@
+﻿@model  QLEventKhoa.ViewModels.GetListFaculyAndCategoryEvent
+@{
+    ViewBag.Title = "SuggestEventView";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+<style>
+    .cover{
+         background-color:lightgrey;
+        padding:3%;
+    }
+    .inrow{
+        width:75%;
+        display:flex;
+
+    }
+    .inrowbtn{
+        margin-top:20px;
+        width:100%;
+        display:flex;
+    }
+
+</style>
+
+<section>
+    <div class="db">
+        @Html.Partial("_PartialPageLeftSV")
+
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4 class="text-center">Đề xuất sự kiện</h4>
+
+                <div class="cover">
+                    <div class="box box-primary">
+                        <div class="box box-header with-boder">
+                        </div>
+                        @Html.AntiForgeryToken()
+
+
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Tên sự kiện</label>
+                                @*<input type="text" class="form-control" id="TenEvent" placeholder="Tên sự kiện">*@
+                                <input class="form-control" type="text" name="EventName" id="EventName" value="" placeholder="Tên sự kiện" maxlength="255" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Địa điểm</label>
+                                <input class="form-control" type="text" name="Address" id="Place" value="" placeholder="Nơi tổ chức" maxlength="128" />
+                            </div>
+
+                            <div class="form-group">
+                                <label>Số lượng sinh viên</label>
+                                <input class="form-control" type="number" name="Limit" id="Amount" value="" placeholder="Số lượng tham gia " />
+
+                            </div>
+                            <div class="form-group">
+                                <label>Khoa</label>
+                                <select id="Faculty" class="form-control">
+                                    <option>-- Chọn khoa --</option>
+                                    @foreach (var item in Model.GetListFaculty)
+                                    {
+                                        <option value="@item.idKhoa">@item.tenKhoa</option>
+
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Loại sự kiện</label>
+                                <select id="CategoryEvent" class="form-control">
+                                    <option>-- Chọn loại sự kiện --</option>
+                                    @foreach (var item in Model.GetCategoryEvent)
+                                    {
+                                        <option value="@item.idLoaiEvent">@item.tenLoaiEvent</option>
+
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Chi phí tổ chức (Không bắt buộc)</label>
+                                <input class="form-control" id="Price" type="number" name="" value="" placeholder="Chi phi" />
+                            </div>
+
+                            <div class="inrow">
+                                <div class="form-group" style="width:40%">
+                                    <label>Thời gian bắt đầu  </label>
+                                    <div class="input-group ">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-clock-o"></i>
+                                        </div><!-- /input-group -->
+                                        <input id="DayBegin" class="form-control" type="datetime-local" />
+                                    </div>
+                                </div>
+                                <div class="form-group" style="width:40%; margin-left:15%">
+                                    <label>Mã tham gia sự kiện</label>
+                                    <div class="input-group ">
+
+                                        <input class="form-control" type="text" onchange="InputToUpper()" name="" id="EventCode" value="" placeholder="Mã tham gia" maxlength="5" />
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-danger" onclick="makeid()" type="button" style="font-weight: bold;font-size: 13px; border-radius: 5px ; margin-left:5px">Random mã sự kiện</button>
+                                        </span>
+                                    </div><!-- /input-group -->
+                                </div>
+
+                            </div>
+                            <form action="@Url.Action("sugtest","suggestevent")" method="post" id="formactionsuggest" enctype="multipart/form-data">
+                                <!-- hình ảnh -->
+                                <label for="BannerEvent">Banner sự kiện</label>
+                                <input class="btn btn-info" style="width:35%" type="file" required name="fileupload" id="fileupload"
+                                       onchange="loadfile()"
+                                       accept="images/*,.jpg,.jpeg,.png, .gif">
+                                @ViewData["Alert"]
+                                <div style="margin-top:15px; ">
+                                    <img id="banner" alt="your image" style="display:none;height:300px" />
+                                </div>
+                                <!--loadfile-->
+                                <div style="margin-top:15px">
+                                    <label>Kế hoạch sự kiện <i>(Tên sinh viên - mã số - tên sự kiện)</i></label>
+                                    <input class="btn btn-info" type="file" style="width:35%" required name="fileuploaddoc" id="fileuploaddoc"
+                                           onchange="loadfiledox()"
+                                           accept="docx/*,.doc,.docx,.PDF">
+                                    @ViewData["Alert"]
+                                    <div style="margin-top:15px; border:1px gray solid;width:35%;height:30px;border-radius:5px ;display:none" id="urlfiledocdiv">
+                                        <b id="urlfiledoc" style="color:blue;font-size:15px ; padding:10px">file1 </b>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="box box-info">
+                            <div class="box-header">
+                                <h3 class="box-title" style="font-weight: bold">Nội dung sự kiện</h3><!-- <small>Advanced and full of features</small> -->
+                            </div>
+                            <div class="box-body pad">
+                                <textarea class="form-control" id="noiDungEvent"></textarea>
+                            </div>
+                            <script>
+                                var editor = CKEDITOR.replace('noiDungEvent');
+                            </script>
+                        </div>
+                    </div><!-- /.box -->
+                    <div class="box-footer">
+                        <div class="inrowbtn">
+                            <button onclick="SUGEvent()" type="button" class="btn btn-success" style="width: 300px">Gửi đề xuất</button>
+
+                            <button type="button" onclick="cancel()" class="btn btn-danger " style="width: 300px;position:absolute;right:3%">Hủy thao tác</button>
+                        </div>
+                    </div>
+                </div><!-- /.col-->
+
+
+            </div>
+        </div>
+    </div>
+    @*<meta property="fb:Hutech events community" content="104756452038576">
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <div id="fb-root"></div>
+    <script>
+        // assume we are already logged in
+        FB.init({ appId: 'Hutech-events-community-104756452038576', xfbml: true, cookie: true });
+        FB.ui({
+            method: 'share',
+            href: 'http://www.sukienhtech.somee.com'
+
+        }, function (response) {
+            if (response && !response.error_message) {
+                alert('Posting completed.');
+            } else {
+                alert('Error while posting.');
+            }
+        });
+    </script>*@
+
+</section>
+
+<script>
+
+    let CheckCodeEvent = false;
+    function loadfile() {
+        document.getElementById('banner').src = window.URL.createObjectURL(document.getElementById("fileupload").files[0]);
+        document.getElementById('banner').style.display = "block";
+    }
+
+    function loadfiledox() {
+        var filename = document.getElementById("fileuploaddoc").files[0].name;
+        if (filename.length > 40) {
+            document.getElementById('urlfiledoc').textContent = filename.slice(0, 35) + "..." + filename.slice(filename.length - 5, filename.length);
+        }
+        else {
+            document.getElementById('urlfiledoc').textContent = filename;
+        }
+       
+
+        document.getElementById('urlfiledocdiv').style.display = "block";
+    }
+
+    function InputToUpper() {
+        var obj = document.getElementById("EventCode").value;
+        if (obj != "") {
+            document.getElementById("EventCode").value = obj.toUpperCase().replace(" ","");
+        }
+        if (obj.length == 5) {
+            var count = 0;
+            $.ajax({
+                url: '/SuggestEvent/getcodeallevent',
+                type: "get",
+
+                success: function (valuert) {
+                    if (valuert.code == 200) {
+
+                        $.each(valuert.data, function (i, item) {
+                            if (obj == item) {
+                                count++;
+                            }
+                            console.log(item);
+                        });
+                        count == 0 ? CheckCodeEvent = false : CheckCodeEvent = true;
+                        if (CheckCodeEvent == true) {
+                            alert("Mã tham gia này đã được sử dụng vui lòng thử lại");
+                            document.getElementById("EventCode").value = "";
+                        }
+                    }
+                    if (valuert.code == 500) {
+                        CheckCodeEvent = false;
+                    }
+                }
+            });
+        }      
+    }
+
+    function makeid() {
+        var text = "";
+        var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        for (var i = 0; i < 5; i++)
+            text += possible.charAt(Math.floor(Math.random() * possible.length));
+        document.getElementById("EventCode").value = text;
+        InputToUpper();
+    }
+
+    function SUGEvent() {
+        var EVName = document.getElementById("EventName").value;
+        var EVPlace = document.getElementById("Place").value;
+        var EVLimmit = document.getElementById("Amount").value;
+        var EVFaculty = document.getElementById("Faculty").value;
+        var EVCate = document.getElementById("CategoryEvent").value;
+        var EVPrice = document.getElementById("Price").value;
+        var EVBegin = document.getElementById("DayBegin").value;
+        var EVCode = document.getElementById("EventCode").value;
+        var EVContent = CKEDITOR.instances['noiDungEvent'].getData();
+        var EVBanner = document.getElementById("fileupload").files[0];
+        var EVTarget = document.getElementById("fileuploaddoc").files[0];
+
+        if (EVName == "" || EVName.length < 10) { alert("Tên sự kiện không hợp lệ ") }
+        else if (EVPlace == "" || EVPlace.length < 5) { alert("Địa chỉ tổ chức không rõ ràng! hãy ghi rõ hơn") }
+        else if (EVLimmit < 50 || EVLimmit > 5000) { alert("Số lượng tham gia chỉ có thể từ 50 đến 5000 người ") }
+        else if (EVFaculty == "") { alert("Chọn khoa tổ chức") }
+        else if (EVCate == "") { alert("Chọn loại sự kiện") }
+        else if (EVBegin == "") { alert("Chọn thời gian bắt đầu sự kiện") }
+        else if (EVContent == "" || EVContent < 10) { alert("Nội dung sự kiện không được ít hơn 10 kí tự") }
+        else if (EVBanner.name == "") { alert("Vui lòng chọn banner của sự kiện") }
+        else if (EVTarget.name == "") { alert("Vui lòng tải lên kế hoạch của sự kiện") }
+        else if (EVPrice == "" || EVPrice<0) { alert("Hãy nhập chi phí") } 
+        else if (EVCode.length < 5 || CheckCodeEvent == true) { alert("Mã tham gia không hợp lệ, hãy thử lại (Lưu ý : mã tham gia phải có 5 kí tự) ") }
+        else {
+            var formdata = new FormData();
+            formdata.append("EVName", EVName);
+            formdata.append("EVPlace", EVPlace);
+            formdata.append("EVLimit", EVLimmit);
+            formdata.append("EVFaculty", EVFaculty);
+            formdata.append("EVCate", EVCate);
+            formdata.append("EVPrice", EVPrice);
+            formdata.append("EVBegin", EVBegin);
+            formdata.append("EVCode", EVCode);
+            formdata.append("EVContent", EVContent);
+            formdata.append("EVBanner", EVBanner);
+            formdata.append("EVTarget", EVTarget);
+            $.ajax({
+                url: '/SuggestEvent/SendSuggest',
+                type: "POST",
+                contentType: false, // Not to set any content header
+                processData: false, // Not to process data
+                data: formdata,
+                async: false,
+                success: function (valuert) {
+                    if (valuert.code == 200) {
+                     
+                        alert("Đề xuất sự kiện thành công, hãy chờ kết quả từ quản lý ");
+                        window.location.href="/HomeSV/IndexSV"
+                    }
+                    if (valuert.code == 500) {
+                        alert("Lỗi trong quá trình xử lý thông tin, thử lại hoặc liên hệ với quản lý");
+                    }
+                    if (valuert.code == 404) {
+                        if (confirm(valuert.msg) == true) {
+                            location.href ="/AccountSV/LoginSV"
+                        }
+                    }
+                },
+                error: function (err) {
+                    alert("Xin lỗi, đã có vấn đề trong quá trình xử lý, hãy thử lại sau ít phút");
+                }
+
+            });
+             }   
+    }
+
+    function cancel() {
+        location.reload();
+        location.href = "/homeSV/indexSV";
+    }
+ 
+</script>

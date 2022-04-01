@@ -1,0 +1,590 @@
+﻿@model QLEventKhoa.ViewModels.listclass
+@{
+    /**/
+
+    ViewBag.Title = "Quản lý lớp học";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lý lớp học
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("IndexLopHocSV","QLLopHocSV")">Quản lý lớp học</a></li>
+    </ol>
+</section>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<style>
+    .cover {
+        width: 100%;
+        margin: 0;
+    }
+
+    .data-view {
+        width: 80%;
+        background-color: transparent;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .lable {
+        text-align: right;
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+
+    .input {
+        width: 300px;
+        float: right;
+        border-radius: 10px;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+
+    .in_y {
+        width: 110px;
+        height: 40px;
+    }
+
+    .in_y_lb {
+        padding-top:5px;
+        width: 60px;
+        margin-left: 10px;
+        margin-right: 10px;
+        height: 40px;
+    }
+
+    .yearout {
+        width: 100%;
+        border-radius: 10px;
+        height: 30px;
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    .lby {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    #success {
+        background: #ff3939;
+    }
+
+    #warning {
+        background: #ff3939;
+    }
+
+    #failure {
+        background: #ff3939;
+    }
+
+    .notify {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 0px;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        background: rgba(0,0,0,.6);
+        overflow: hidden;
+        transition: width .4s, height .4s;
+        border-radius: 15px;
+    }
+
+    #notifyType:before {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .activenoti {
+        height: 50px;
+        width: 60%;
+    }
+
+    .success:before {
+        Content: "Cập nhật thành công!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .warning:before {
+        Content: "Không có gì được cập nhật!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .failure:before {
+        Content: "Cập nhật thất bại, xin vui lòng thử lại !!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .eye-info {
+        width: 50px;
+        height: 35px;
+        margin-left: 5px;
+        background-color: deepskyblue;
+        color: black;
+        text-align: center
+    }
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                    <input type="button" class="btn btn-success" id="ThemLopHoc" value="Thêm lớp học" data-toggle="modal"  data-target="#fade_addnewclass"/>
+                    <button style="height:35px" onclick="location.reload()" class="btn btn-warning glyphicon glyphicon-refresh" data-toggle="tooltip" data-placement="right" title="Tải lại trang"></button>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+
+                    <datalist id="select_year">
+                        @for (int y = 2100; y >= 1999; y--)
+                        {
+                            <option>@y</option>
+                        }
+                    </datalist>
+
+                    <table id="tblophoc" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã lớp học</th>
+                                <th>Thuộc khoa</th>
+                                <th>Số sinh viên</th>
+                                <th>Niên khóa</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="addnew_class">
+                            @{int rowNo = 0;}
+                            @foreach (var item in Model.dsLop)
+                            {
+                                <tr>
+                                    <td class="text-center">@(rowNo += 1)</td>
+                                    <td id="tbclassname_@item.idLopHoc">@item.tenLopHoc</td>
+                                    <td id="tbclassfal_@item.idLopHoc">@item.tbKhoa.tenKhoa</td>
+                                    <td>@item.tbSinhViens.Count</td>
+                                    <td id="tbclassyear_@item.idLopHoc"> @item.namBatDau - @item.namKetThuc</td>
+                                    @if (item.statusLopHoc == true)
+                                    {
+                                        <td class="text-center"> <b style="color:forestgreen" id="tbclassstt_@item.idLopHoc"> Chưa tốt nghiệp </b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><b style="color:tomato" id="tbclassstt_@item.idLopHoc"> Đã tốt nghiệp </b> </td>
+                                    }
+                                    <td style="width:200px;text-align:center;">
+                                        <a class="btn btn-warning" style="width:135px" id="" data-toggle="modal" data-target="#fade_@item.idLopHoc">Chỉnh sửa</a>
+                                        @if (item.tbSinhViens.Count > 0)
+                                        {
+                                            <a class="btn glyphicon glyphicon-eye-open eye-info " data-toggle="tooltip" data-placement="top" title="Xem danh sách sinh viên lớp @item.tenLopHoc" href="@Url.Action("QLSV","QLtaikhoansv",new {classid=item.idLopHoc})"></a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn glyphicon glyphicon-eye-close eye-info " data-toggle="tooltip" data-placement="top" title="Lớp này hiện tại chưa có sinh viên " href="#"></a>
+                                        }
+                                        <div class="modal fade" id="fade_@item.idLopHoc" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <center>
+                                                            <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA LỚP HỌC</h3>
+                                                            <b>Lớp: @item.tenLopHoc</b>
+                                                        </center>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="cover">
+                                                            <div class="data-view">
+                                                                <label class="lable">Tên lớp học:</label>
+                                                                <input class="input" id="e_classname_@item.idLopHoc" value="@item.tenLopHoc" />
+                                                            </div>
+                                                            <div class="data-view">
+                                                                <label class="lable"> Khoa:</label>
+                                                                <select id="e_classfal_@item.idLopHoc" class="input">
+                                                                    @foreach (var k in Model.dsKhoa)
+                                                                    {
+                                                                        if (item.idKhoa != k.idKhoa)
+                                                                        {
+                                                                            <option value="@k.idKhoa">@k.tenKhoa</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option selected value="@k.idKhoa">@k.tenKhoa</option>
+                                                                        }
+                                                                    }
+                                                                </select>
+                                                            </div>
+                                                            <div class="data-view">
+                                                                <label class="lable"> Niên khóa:</label>
+                                                                <div style="display:flex;float:right">
+                                                                    <div class="in_y">
+                                                                        <input id="e_classin_@item.idLopHoc" class="yearout" list="select_year" value="@item.namBatDau" />
+                                                                    </div>
+                                                                    <div class="in_y_lb">
+                                                                        <label class="lby">Đến</label>
+                                                                    </div>
+                                                                    <div class="in_y">
+                                                                        <input id="e_classout_@item.idLopHoc" class="yearout" list="select_year" value="@item.namKetThuc" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="data-view">
+                                                                <label class="lable"> Trạng thái:</label>
+                                                                <select id="e_classstt_@item.idLopHoc" class="input">
+                                                                    @if (item.statusLopHoc == false)
+                                                                    {
+                                                                        <option value="true">Chưa tốt nghiệp</option>
+                                                                        <option selected value="false">Đã tốt nghiệp</option>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <option selected value="true">Chưa tốt nghiệp</option>
+                                                                        <option value="false">Đã tốt nghiệp</option>
+                                                                    }
+                                                                </select>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                                                        <button class="btn btn-success" aria-hidden="true" onclick="edit(@item.idLopHoc)">Lưu thay đổi</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã lớp học</th>
+                                <th>Thuộc khoa</th>
+                                <th>Số sinh viên</th>
+                                <th>Niên khóa</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div><!-- /.box-body -->
+                <div id="clbg_nt" class="notify"><span id="notifyType" class=""></span></div>
+            </div><!-- /.box -->
+
+        </div><!-- /.col -->
+
+    </div><!-- /.row -->
+
+</section><!-- /.content -->
+
+
+<div class="modal fade" id="fade_addnewclass" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">THÊM MỚI LỚP HỌC</h3>
+                </center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="cover">
+                    <div class="data-view">
+                        <label class="lable">Tên lớp học:</label>
+                        <input class="input" id="a_classname" placeholder="Nhập tên lớp học" />
+                    </div>
+                    <div class="data-view">
+                        <label class="lable"> Khoa:</label>
+                        <select id="a_classfal" class="input">
+                            @foreach (var k in Model.dsKhoa)
+                            {
+                               <option value="@k.idKhoa">@k.tenKhoa</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="data-view">
+                        <label class="lable"> Niên khóa:</label>
+                        <div style="display:flex;float:right">
+                            <div class="in_y">
+                                <input id="a_classin" class="yearout" list="select_year" placeholder="YYYY" />
+                            </div>
+                            <div class="in_y_lb">
+                                <label class="lby">Đến</label>
+                            </div>
+                            <div class="in_y">
+                                <input id="a_classout" class="yearout" list="select_year" placeholder="YYYY" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-success" aria-hidden="true" onclick="Addclass()">Thêm mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var row = @rowNo +1;
+    //datatable
+    $(function () {
+        
+        $('#tblophoc').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+
+    //----------------------------Thêm mới---------------------------------------//
+
+    function Addclass() {
+        var today = new Date();
+        var a_classname = document.getElementById("a_classname").value;
+        var a_classfal = document.getElementById("a_classfal").value;
+        var a_classin = document.getElementById("a_classin").value;
+        var a_classout = document.getElementById("a_classout").value;
+        var indexcount = row;
+        row = indexcount + 1;
+        if (a_classname.length < 7 || a_classname.length > 10) {
+            alert("Tên lớp chỉ có thể có từ 7 - 10 kí tự");
+            return;
+        }
+        else if (a_classout - a_classin < 4 || a_classout - a_classin > 7) {
+            alert("Niên khóa phải từ 4 - 7 năm");
+            return;
+        }
+        else if (isNaN(a_classin) == true || isNaN(a_classout) == true || a_classin < 1999 || a_classout > 21000) {
+            alert("Định dạng năm không hợp lệ");
+            return;
+        }
+        else if (a_classin - today.getFullYear() > 3) {
+            alert("Năm bắt đầu không hợp lệ! chỉ có thể bắt đầu năm học trước 3 năm");
+        }
+        else {
+            $.ajax({
+                url: '/QLLophocSV/AddCLASS',
+                type: "POST",
+                data: { a_classname, a_classfal, a_classin, a_classout },
+                success: function (valuert) {
+                    if (valuert.code == 200) {                       
+                        var classid = valuert.idclass;
+                        var a_new = ' <tr id="indexcount" style="background-color:#c4c43b">'
+                            + '<td class="text-center">' + indexcount + '</td>'
+                            + '<td id="tbclassname_' + classid + '">' + a_classname + '</td>'
+                            + '<td id="tbclassfal_' + classid + '">' + $("#a_classfal option:selected").text() + '</td>'
+                            + '<td>0</td>'
+                            + '<td id="tbclassyear_' + classid + '">' + a_classin + ' - ' + a_classout + '</td> '
+                            + '<td class="text-center"> <b style="color:forestgreen" id="tbclassstt_' + classid + '"> Chưa tốt nghiệp </b></td>'
+                            + '<td style="width:200px;text-align:center">'
+                            + '<a class="btn btn-warning" style="width:135px" id="" data-toggle="modal" data-target="#fade_' + classid + '">Chỉnh sửa</a>'
+                            + '<a class="btn glyphicon glyphicon-eye-close eye-info"  data-toggle="tooltip" data-placement="top" title="Lớp này hiện tại chưa có sinh viên "  href = "#" ></a >'
+                            + '<div class="modal fade" id="fade_' + classid + '" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">'
+                            + '<div class="modal-dialog" role="document">'
+                            + '<div class="modal-content">'
+                            + '<div class="modal-header">'
+                            + '<center>'
+                            + '<h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA LỚP HỌC</h3>'
+                            + '<b>Khoa: ' + a_classname + '</b>'
+                            + '</center>'
+                            + '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                            + '<span aria-hidden="true">&times;</span>'
+                            + '</button>'
+                            + '</div>'
+                            + '<div class="modal-body">'
+                            + '<div class="cover">'
+                            + '<div class="data-view">'
+                            + '<label class="lable">Tên lớp học:</label>'
+                            + '<input class="input" id="e_classname_' + classid + '" value="' + a_classname + '" />'
+                            + '</div>'
+                            + '<div class="data-view">'
+                            + '<label class="lable"> Khoa:</label>'
+                            + '<select id="e_classfal_' + classid + '" class="input">';                                   
+                            $.each(valuert.lstfal, function (i, item) {                          
+                                if (item.idkhoa == a_classfal) {
+                                    a_new += '<option selected value="' + item.idkhoa + '">' + item.tenkhoa + '</option>';
+                                }
+                                else {
+                                    a_new += '<option value="' + item.idkhoa + '">' + item.tenkhoa + '</option>';
+                                }                        
+                            });
+                      a_new += '</select >'
+                            + '</div>'
+                            + '<div class="data-view">'
+                            + '<label class="lable"> Niên khóa:</label>'
+                            + '<div style="display:flex;float:right">'
+                            + '<div class="in_y">'
+                            + '<input id="e_classin_' + classid + '" class="yearout" list="select_year" value="' + a_classin + '" />'
+                            + '</div>'
+                            + '<div class="in_y_lb">'
+                            + '<label class="lby">Đến</label>'
+                            + '</div>'
+                            + '<div class="in_y">'
+                            + '<input id="e_classout_' + classid + '" class="yearout" list="select_year" value="' + a_classout + '" />'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+                            + '<div class="data-view">'
+                            + '<label class="lable"> Trạng thái:</label>'
+                            + '<select id="e_classstt_' + classid + '" class="input">'
+                            + '<option selected value="true">Chưa tốt nghiệp</option>'
+                            + '<option value="false">Đã tốt nghiệp</option>'
+                            + '</select>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div >'
+                            + '<div class="modal-footer">'
+                            + '<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>'
+                            + '<button class="btn btn-success" aria-hidden="true" onclick="edit(' + classid + ')">Lưu thay đổi</button>'
+                            + '</div>'
+                            + ' </div >'
+                            + '</div >'
+                            + '</div >'
+                            + '</td >'
+                            + '</tr >';
+                        document.getElementById("addnew_class").insertAdjacentHTML("afterbegin", a_new);
+                        document.getElementById("a_classname").value = "";
+                        document.getElementById("a_classin").value = "";
+                        document.getElementById("a_classout").value = "";                      
+                        $('#fade_addnewclass').modal("hide");
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("success");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("success");
+                        }, 2000);
+                    }
+                    if (valuert.code == 500) {
+                        alert(valuert.msg)
+                    }
+                }, error: function () {
+                    $('#fade_addnewclass').modal("hide");
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+
+        }
+    }
+
+    //--------------------------------chỉnh sửa --------------------------------------//
+
+    function edit(id) {
+        var e_classname = document.getElementById("e_classname_" + id).value;
+        var e_classfal = document.getElementById("e_classfal_" + id).value;
+        var e_classin = document.getElementById("e_classin_" + id).value;
+        var e_classout = document.getElementById("e_classout_" + id).value;
+        var e_classstt = document.getElementById("e_classstt_" + id).value;
+
+        var tbclassname = document.getElementById("tbclassname_" + id);
+        var tbclassfal = document.getElementById("tbclassfal_" + id);
+        var tbclassyear = document.getElementById("tbclassyear_" + id);
+        var tbclassstt = document.getElementById("tbclassstt_" + id);
+        var today = new Date();
+
+        if (e_classname.length < 7 || e_classname.length > 10) {
+            alert("Tên lớp không được ít hơn 7 kí tự và nhiều hơn 10 kí tự");
+            return;
+        }
+        else if (e_classout - e_classin < 4 || e_classout - e_classin > 7) {
+            alert("Niên khóa phải từ 4 - 7 năm");
+            return;
+        }
+        else if (isNaN(e_classin) == true || isNaN(e_classout) == true || e_classin < 1999 || e_classout > 21000) {
+            alert("Định dạng năm không hợp lệ");
+            return;
+        }
+        else if (e_classin - today.getFullYear() > 3) {
+            alert("Năm bắt đầu không hợp lệ! chỉ có thể bắt đầu năm học trước 3 năm");
+        }
+        else {
+            $('#fade_' + id).modal("hide");
+            $.ajax({
+                url: '/QLLopHocSV/EditLH',
+                type: "POST",
+                data: { id, e_classname, e_classfal, e_classin, e_classout, e_classstt },
+                success: function (response) {
+                    if (response == "true") {
+                        tbclassname.innerText = e_classname;
+                        tbclassfal.innerText = $("#e_classfal_" + id + " option:selected").text();
+                        tbclassyear.innerText = e_classin + " - " + e_classout;
+
+                        if (tbclassstt.innerText == "Chưa tốt nghiệp" && e_classstt == "false") {
+                            tbclassstt.innerText = "Đã tốt nghiệp"
+                            tbclassstt.style.color = "tomato"
+                        }
+                        if (tbclassstt.innerText == "Đã tốt nghiệp" && e_classstt == "true") {
+                            tbclassstt.innerText = "Chưa tốt nghiệp"
+                            tbclassstt.style.color = "forestgreen"
+                        }
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("success");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("success");
+                        }, 2000);
+                    }
+                    if (response=="false") {
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(255,152,60, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("warning");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("warning");
+                        }, 2000);
+                    }
+                    if (response == "cantremove") {
+                        alert('Không thể xác nhận đã tốt nghiệp cho lớp học này bởi đang còn sinh viên chưa tốt nhiệp , hãy kiểm tra lại !')
+                    }
+                },
+                error: function (err) {
+                    $('#fade_' + id).modal("hide");
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+        }
+    }
+</script>
+
+

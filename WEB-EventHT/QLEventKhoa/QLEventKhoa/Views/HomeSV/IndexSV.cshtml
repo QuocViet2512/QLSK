@@ -1,0 +1,315 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbSuKien>
+@{
+    ViewBag.Title = "Trang chủ";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+<link href="~/Content/slick.css" rel="stylesheet" />
+<link href="~/Content/slick-theme.css" rel="stylesheet" />
+
+<section>
+    <div class="tourz-search" style="background-image: url('../../images/cover/cover0.jpg');">
+        <div class="container">
+            <div class="row">
+                <div class="tourz-search-1">
+                    <h1>Nhập tên sự kiện để tìm kiếm</h1>
+                    <!--Tìm kiếm-->
+                    @using (Html.BeginForm("SearchEvent", "HomeSV", FormMethod.Post))
+                    {
+                        <div class="tourz-search-form" id="join-room-form">
+                            <div class="input-field">
+                                <input id="select-city" class="autocomplete">
+                                <label for="select-city">Enter class</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" id="event-code" name="searchSTR" class="autocomplete search-hotel-type" required maxlength="50" placeholder="Nhập tên sự kiện...">
+                                @*<label for="event-code" class="search-hotel-type">Nhập tên sự kiện</label>*@
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" value="Tìm kiếm" class="waves-effect waves-light tourz-sear-btn">
+                            </div>
+                        </div>
+                    }
+                    <!--Tìm kiếm-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--====== Noi Bat ==========-->
+<section>
+    <div class="rows pad-bot-redu tb-space">
+        <div class="container">
+            <!-- TITLE & DESCRIPTION -->
+            <div class="spe-title">
+                <h2>Sự kiện <span>nổi bật</span> </h2>
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
+                </div>
+                <p>Hãy đến và tham gia các sự kiện nổi bật nhất !!</p>
+
+            </div>
+            <!-- CITY -->
+            @if (Model.Where(a => a.idTagEvent == 1).Count() > 0)
+            {
+                foreach (var item in Model.Where(a => a.idTagEvent == 1).Take(6))
+                {
+                    <div class="col-md-6 wow slideInUp">
+                        <a href="@Url.Action("DetailEvent","HomeSV",new {id=item.idEvent })">
+                            <div class="tour-mig-like-com">
+                                <div class="tour-mig-lc-img"> <img src="~/images/uploads/@item.imageEvent" alt=""> </div>
+                                <div class="tour-mig-lc-con">
+                                    <h5>@item.tenEvent</h5>
+                                    <p><span>@item.ngayBatDau.ToString("dd-MM-yyyy HH:mm")</span><small>@item.noiToChuc</small></p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</section>
+
+
+<!--Danh Muc SỰ KIỆN-->
+<section id="section-category">
+    <div class="rows pad-bot-redu tb-space">
+        <div class="container">
+            <!-- TITLE & DESCRIPTION -->
+            <div class="spe-title">
+                <h2>Danh mục <span>sự kiện</span></h2>
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
+                </div>
+                <p>Cùng Hutech và các bạn sinh viên tham gia các sự kiện!</p>
+            </div>
+
+            <div class="col-md-4 wow slideInUp">
+
+                <div id="myCarousel1" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+
+                    <h3 class="text-center category-title">Học thuật-Hội thảo</h3>
+                    <div class="carousel-inner category-fix-img">
+                        @if (Model.Where(a => a.idLoaiEvent == 1).Count() > 0)
+                        {
+                            <div class="item active">
+                                <a href="@Url.Action("DetailEvent","HomeSV",new {id=Model.FirstOrDefault().idEvent })">
+                                    <div class="tour-mig-like-com">
+                                        <div class="tour-mig-lc-img"> <img src="~/images/uploads/@Model.Where(a=>a.idLoaiEvent==1).FirstOrDefault().imageEvent" alt=""> </div>
+                                        <div class="tour-mig-lc-con">
+                                            <p style="font-weight:bold" class="text-center">@Model.Where(a => a.idLoaiEvent == 1).FirstOrDefault().tenEvent</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            foreach (var item in Model.Where(a => a.idLoaiEvent == 1).Skip(1))
+                            {
+                                <div class="item">
+                                    <a href="@Url.Action("DetailEvent","HomeSV",new {id=item.idEvent })">
+                                        <div class="tour-mig-like-com">
+                                            <div class="tour-mig-lc-img"> <img src="~/images/uploads/@item.imageEvent" alt=""> </div>
+                                            <div class="tour-mig-lc-con">
+                                                <p style="font-weight:bold" class="text-center">@item.tenEvent</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel1" data-slide="prev">
+                        <span class="icon-prev"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel1" data-slide="next">
+                        <span class="icon-next"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+
+            <div class="col-md-4 wow slideInUp">
+                <div id="myCarousel2" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <h3 class="text-center category-title">Văn hóa-Văn nghệ</h3>
+                    <div class="carousel-inner category-fix-img">
+                        @if (Model.Where(a => a.idLoaiEvent == 2).Count() > 0)
+                        {
+
+                            <div class="item active">
+                                <a href="@Url.Action("DetailEvent","HomeSV",new {id=Model.Where(a=>a.idLoaiEvent==2).FirstOrDefault().idEvent })">
+                                    <div class="tour-mig-like-com">
+                                        <div class="tour-mig-lc-img"> <img src="~/images/uploads/@Model.Where(a=>a.idLoaiEvent==2).FirstOrDefault().imageEvent" alt=""> </div>
+                                        <div class="tour-mig-lc-con">
+                                            <p style="font-weight:bold" class="text-center">@Model.Where(a => a.idLoaiEvent == 2).FirstOrDefault().tenEvent</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            foreach (var item in Model.Where(a => a.idLoaiEvent == 2).Skip(1))
+                            {
+                                <div class="item">
+                                    <a href="@Url.Action("DetailEvent","HomeSV",new {id=item.idEvent })">
+                                        <div class="tour-mig-like-com">
+                                            <div class="tour-mig-lc-img"> <img src="~/images/uploads/@item.imageEvent" alt=""> </div>
+                                            <div class="tour-mig-lc-con">
+                                                <p style="font-weight:bold" class="text-center">@item.tenEvent</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
+                    </div>
+
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel2" data-slide="prev">
+                        <span class="icon-prev"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel2" data-slide="next">
+                        <span class="icon-next"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4 wow slideInUp">
+                <div id="myCarousel3" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <h3 class="text-center category-title">Thể thao-Giao lưu</h3>
+                    <div class="carousel-inner category-fix-img">
+                        @if (Model.Where(a => a.idLoaiEvent == 3 || a.idLoaiEvent == 4).Count() > 0)
+                        {
+
+                            <div class="item active">
+                                <a href="@Url.Action("DetailEvent","HomeSV",new {id=Model.Where(a=>a.idLoaiEvent==3).FirstOrDefault().idEvent })">
+                                    <div class="tour-mig-like-com">
+                                        <div class="tour-mig-lc-img"> <img src="~/images/uploads/@Model.Where(a=>a.idLoaiEvent==3).FirstOrDefault().imageEvent" alt=""> </div>
+                                        <div class="tour-mig-lc-con">
+                                            <p style="font-weight:bold" class="text-center">@Model.Where(a => a.idLoaiEvent == 3 || a.idLoaiEvent == 4).FirstOrDefault().tenEvent</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            foreach (var item in Model.Where(a => a.idLoaiEvent == 3 || a.idLoaiEvent == 4).Skip(1))
+                            {
+                                <div class="item">
+                                    <a href="@Url.Action("DetailEvent","HomeSV",new {id=item.idEvent })">
+                                        <div class="tour-mig-like-com">
+                                            <div class="tour-mig-lc-img"> <img src="~/images/uploads/@item.imageEvent" alt=""> </div>
+                                            <div class="tour-mig-lc-con">
+                                                <p style="font-weight:bold" class="text-center">@item.tenEvent</p>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                    <!-- Left and right controls -->
+                    <a class="left carousel-control" href="#myCarousel3" data-slide="prev">
+                        <span class="icon-prev"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="right carousel-control" href="#myCarousel3" data-slide="next">
+                        <span class="icon-next"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!--====== De Xuat ===========================================-->
+
+<script src="~/Scripts/slick.min.js"></script>
+<section>
+    <div class="rows pad-bot-redu tb-space">
+        <div class="container" id="inner-page-title">
+            <!-- TITLE & DESCRIPTION -->
+            <div class="spe-title">
+                <h2>Sự kiện <span>đề xuất</span></h2>
+                <div class="title-line">
+                    <div class="tl-1"></div>
+                    <div class="tl-2"></div>
+                    <div class="tl-3"></div>
+                </div>
+                <p>Các sự kiện hay cần xem</p>
+            </div>
+            <div class="slider-recommend rows">
+                @if (Model.Where(a => a.idTagEvent == 2).Count() > 0)
+                {
+                    foreach (var item in Model.Where(a => a.idTagEvent == 2))
+                    {
+                        <div class="col-md-4 col-sm-6 col-xs-12 b_packages">
+                            <a href="@Url.Action("DetailEvent","HomeSV",new {id=item.idEvent })">
+
+                                <div class="v_place_img">
+                                    <img src="~/images/uploads/@item.imageEvent" width="400" height="180" title="">
+                                </div>
+
+                                <div class="b_pack rows">
+                                    <div class="col-md-12 col-sm-12">
+                                        <h4 title="@item.tenEvent">@item.tenEvent</h4>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    }
+                }
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<script type="text/javascript">
+    $('.slider-recommend').slick({
+        // dots: true,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 2000,
+        speed: 700,
+        responsive: [
+            {
+                breakpoint: 1366,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 900,
+                settings: {
+                    arrows: false,
+                    dots: true,
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    arrows: false,
+                    dots: true,
+                    slidesToShow: 1,
+                }
+            }
+
+        ]
+    })
+</script>

@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using QLEventKhoa.ViewModels
+
+<section class="content-header">
+
+    @*<h1>
+            Home
+        </h1>*@
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active">Trang chính</li>
+    </ol>
+</section>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    @if (User.Identity.IsAuthenticated)
+    {
+        <center>
+            <h1><b>Xin chào @User.Identity.Name</b></h1>
+        </center>        
+    }   
+</section><!-- /.content -->

@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{269E0FAA-5322-46D0-835B-DF74C84930D6}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>QLEventKhoa</RootNamespace>
+    <AssemblyName>QLEventKhoa</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>1035</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BCrypt.Net-Next, Version=4.0.2.0, Culture=neutral, PublicKeyToken=1e11be04b6288443, processorArchitecture=MSIL">
+      <HintPath>..\packages\BCrypt.Net-Next.4.0.2\lib\net452\BCrypt.Net-Next.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.55.0\lib\net45\Google.Apis.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.55.0\lib\net461\Google.Apis.Auth.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Auth.1.55.0\lib\net461\Google.Apis.Auth.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Core.1.55.0\lib\net45\Google.Apis.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.Drive.v3, Version=1.55.0.2502, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.Drive.v3.1.55.0.2502\lib\net45\Google.Apis.Drive.v3.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.55.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>..\packages\Google.Apis.1.55.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.3\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Common _Class\AuthenticationFillter.cs" />
+    <Compile Include="Common _Class\AuthorizeRole.cs" />
+    <Compile Include="Common _Class\EncryptMD5.cs" />
+    <Compile Include="Common _Class\RoleProvider.cs" />
+    <Compile Include="Common _Class\SVSessionTimeOut.cs" />
+    <Compile Include="Controllers\Admin\AccountADController.cs" />
+    <Compile Include="Controllers\Admin\HomeADController.cs" />
+    <Compile Include="Controllers\Admin\QLAdminController.cs" />
+    <Compile Include="Controllers\Admin\QLEventController.cs" />
+    <Compile Include="Controllers\Admin\QLKhoaController.cs" />
+    <Compile Include="Controllers\Admin\QLLoaiEventController.cs" />
+    <Compile Include="Controllers\Admin\QLLienHeController.cs" />
+    <Compile Include="Controllers\Admin\QLLopHocSVController.cs" />
+    <Compile Include="Controllers\Admin\QLNTCController.cs" />
+    <Compile Include="Controllers\Admin\QLTagEventController.cs" />
+    <Compile Include="Controllers\Admin\QLtaikhoansvController.cs" />
+    <Compile Include="Controllers\Admin\QLTrangThaiEventController.cs" />
+    <Compile Include="Controllers\Admin\SuggestEventManagerController.cs" />
+    <Compile Include="Controllers\Admin\ThongkeController.cs" />
+    <Compile Include="Controllers\ERRO\ExceptionController.cs" />
+    <Compile Include="Controllers\GoogleDriveFile.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SinhVien\AccountSVController.cs" />
+    <Compile Include="Controllers\SinhVien\HomeSVController.cs" />
+    <Compile Include="Controllers\SinhVien\SuggestEventController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\dbEvent.cs" />
+    <Compile Include="Models\NewFolder1\Model1.cs" />
+    <Compile Include="Models\NewFolder1\tbSuKien.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
+    <Compile Include="Models\tbAdmin.cs" />
+    <Compile Include="Models\tbKhoa.cs" />
+    <Compile Include="Models\tbLienHe.cs" />
+    <Compile Include="Models\tbLoaiAdmin.cs" />
+    <Compile Include="Models\tbLoaiEvent.cs" />
+    <Compile Include="Models\tbLoaiLH.cs" />
+    <Compile Include="Models\tbLopHoc.cs" />
+    <Compile Include="Models\tbNhaToChuc.cs" />
+    <Compile Include="Models\tbSinhVien.cs" />
+    <Compile Include="Models\tbSuKien.cs" />
+    <Compile Include="Models\tbTagEvent.cs" />
+    <Compile Include="Models\tbTaiKhoanSV.cs" />
+    <Compile Include="Models\tbThamGiaEvent.cs" />
+    <Compile Include="Models\tbTrangThaiEvent.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ChangePassSVViewModels.cs" />
+    <Compile Include="ViewModels\DangKyADViewModels.cs" />
+    <Compile Include="ViewModels\DangKySVViewModels.cs" />
+    <Compile Include="ViewModels\DSEventViewModels.cs" />
+    <Compile Include="ViewModels\GetListFaculyAndCategoryEvent.cs" />
+    <Compile Include="ViewModels\LienHeBenSVViewModels.cs" />
+    <Compile Include="ViewModels\listclass.cs" />
+    <Compile Include="ViewModels\QLLopHocViewModels.cs" />
+    <Compile Include="ViewModels\Thongketop10.cs" />
+    <Compile Include="ViewModels\topevthamgia.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\datatables.min.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\slick-theme.css" />
+    <Content Include="Content\slick.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="images\cover\avatar.png" />
+    <Content Include="images\cover\category-bg.jpg" />
+    <Content Include="images\cover\category1.jpg" />
+    <Content Include="images\cover\cover0.jpg" />
+    <Content Include="images\cover\footer.jpg" />
+    <Content Include="images\cover\footer2.png" />
+    <Content Include="images\cover\footer3.jpg" />
+    <Content Include="images\cover\logi-regis-wallpaper.jpg" />
+    <Content Include="images\fav\icon16x16.png" />
+    <Content Include="images\fav\icon32x32x.png" />
+    <Content Include="images\icon\search.png" />
+    <Content Include="images\logo\footer_icon.png" />
+    <Content Include="images\logo\hutechlogo2.png" />
+    <Content Include="images\logo\hutechlogo3.jpg" />
+    <Content Include="images\logo\logo1.png" />
+    <Content Include="images\logo\logo4.png" />
+    <Content Include="images\logo\LOGOMAIN.png" />
+    <Content Include="images\logo\Varbar.jpg" />
+    <Content Include="images\uploads\18.jpg" />
+    <Content Include="images\uploads\2.jpg" />
+    <Content Include="images\uploads\2.png" />
+    <Content Include="images\uploads\20.jpg" />
+    <Content Include="images\uploads\22.jpg" />
+    <Content Include="images\uploads\23.jpg" />
+    <Content Include="images\uploads\24.jpg" />
+    <Content Include="images\uploads\3.jpg" />
+    <Content Include="images\uploads\3.png" />
+    <Content Include="images\uploads\4.jpg" />
+    <Content Include="images\uploads\4.png" />
+    <Content Include="images\uploads\5.jpg" />
+    <Content Include="images\uploads\5.png" />
+    <Content Include="images\uploads\6.png" />
+    <Content Include="images\uploads\burger0.jpg" />
+    <Content Include="images\uploads\burger1.jpg" />
+    <Content Include="images\uploads\burger4.jpg" />
+    <Content Include="images\uploads\chicken1.jpg" />
+    <Content Include="images\uploads\chicken2.jpg" />
+    <Content Include="images\uploads\chicken3.jpg" />
+    <Content Include="images\uploads\chicken4.jpg" />
+    <Content Include="images\uploads\ECO00.jpg" />
+    <Content Include="images\uploads\ECO01.jpg" />
+    <Content Include="images\uploads\FES00.png" />
+    <Content Include="images\uploads\FES01.png" />
+    <Content Include="images\uploads\IT.jpg" />
+    <Content Include="images\uploads\IT00.jpg" />
+    <Content Include="images\uploads\IT01.jpg" />
+    <Content Include="images\uploads\IT03.jpg" />
+    <Content Include="images\uploads\IT04.png" />
+    <Content Include="images\uploads\IT06.png" />
+    <Content Include="images\uploads\IT07.jpg" />
+    <Content Include="images\uploads\IT08.png" />
+    <Content Include="images\uploads\IT09.png" />
+    <Content Include="images\uploads\IT11.jpg" />
+    <Content Include="images\uploads\IT14.jpg" />
+    <Content Include="images\uploads\SPORT02.jpg" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="App_Browsers\qt.browser" />
+    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\datatables.min.js" />
+    <Content Include="Scripts\datetime-moment.js" />
+    <Content Include="Scripts\jquery-3.3.1.js" />
+    <Content Include="Scripts\jquery-3.3.1.min.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.js" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\pusher.min.js" />
+    <Content Include="Scripts\slick.js" />
+    <Content Include="Scripts\slick.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\Shared\_PartialHeaderAD.cshtml" />
+    <Content Include="Views\Shared\_PartialLeftAD.cshtml" />
+    <Content Include="Views\Shared\_PartialFooterAD.cshtml" />
+    <Content Include="Views\HomeAD\IndexAD.cshtml" />
+    <Content Include="Views\QLKhoa\ListKhoa.cshtml" />
+    <Content Include="Views\QLTagEvent\IndexTagEvent.cshtml" />
+    <Content Include="Views\QLLoaiEvent\IndexLoaiEvent.cshtml" />
+    <Content Include="Views\QLTrangThaiEvent\IndexTrangThaiEvent.cshtml" />
+    <Content Include="Views\QLEvent\addEvent.cshtml" />
+    <Content Include="Views\Shared\_LayoutSV.cshtml" />
+    <Content Include="Views\Shared\_PartialSinhVSmall.cshtml" />
+    <Content Include="Views\Shared\_PartialLoginSV.cshtml" />
+    <Content Include="Views\Shared\_PartialFooterSV.cshtml" />
+    <Content Include="Views\AccountSV\LoginSV.cshtml" />
+    <Content Include="Views\HomeSV\IndexSV.cshtml" />
+    <Content Include="Views\HomeSV\DetailEvent.cshtml" />
+    <Content Include="Views\HomeSV\getEventbyKhoa.cshtml" />
+    <Content Include="Views\HomeSV\_PartialDSKhoaNavBar.cshtml" />
+    <Content Include="Views\QLEvent\DanhSachEvent.cshtml" />
+    <Content Include="Views\QLEvent\editEvent.cshtml" />
+    <Content Include="Views\AccountSV\RegisterSV.cshtml" />
+    <Content Include="Views\QLNTC\NTC.cshtml" />
+    <Content Include="Views\AccountAD\RegisterAD.cshtml" />
+    <Content Include="Views\AccountAD\LoginAD.cshtml" />
+    <Content Include="Views\Shared\_PartialPageLeftSV.cshtml" />
+    <Content Include="Views\HomeSV\DSDangKy.cshtml" />
+    <Content Include="Views\HomeSV\DSDangKyOld.cshtml" />
+    <Content Include="Views\HomeSV\AboutUs.cshtml" />
+    <Content Include="Views\AccountSV\ProfileSV.cshtml" />
+    <Content Include="Views\HomeSV\SearchEvent.cshtml" />
+    <Content Include="Views\QLLienHe\IndexLoaiLH.cshtml" />
+    <Content Include="Views\HomeSV\LienHeSV.cshtml" />
+    <Content Include="Views\QLEvent\DanhSachThamGia.cshtml" />
+    <Content Include="Views\HomeSV\DanhSachLienHe.cshtml" />
+    <Content Include="Views\QLLienHe\DSPhanHoi.cshtml" />
+    <Content Include="Views\QLLienHe\PhanHoiLH.cshtml" />
+    <Content Include="Views\HomeAD\Unauthorized.cshtml" />
+    <Content Include="Views\QLtaikhoansv\QLTKSV.cshtml" />
+    <Content Include="Views\QLAdmin\addLoaiAD.cshtml" />
+    <Content Include="Views\QLAdmin\DSAdmin.cshtml" />
+    <Content Include="Views\QLAdmin\editLoaiAD.cshtml" />
+    <Content Include="Views\QLAdmin\IndexLoaiAD.cshtml" />
+    <Content Include="Views\QLLienHe\addLoaiLH.cshtml" />
+    <Content Include="Views\QLLienHe\editLoaiLH.cshtml" />
+    <Content Include="Views\QLLoaiEvent\addLoaiSK.cshtml" />
+    <Content Include="Views\QLLoaiEvent\editLoaiSK.cshtml" />
+    <Content Include="Views\QLLopHocSV\IndexLopHocSV.cshtml" />
+    <Content Include="Views\QLTagEvent\AddTag.cshtml" />
+    <Content Include="Views\QLTagEvent\EditTAG.cshtml" />
+    <Content Include="Views\QLTrangThaiEvent\addTrangThaiSK.cshtml" />
+    <Content Include="Views\QLTrangThaiEvent\editTrangThaiSK.cshtml" />
+    <Content Include="Views\Thongke\Thongke.cshtml" />
+    <Content Include="Views\QLtaikhoansv\QLSV.cshtml" />
+    <Content Include="Views\Exception\notfound404.cshtml" />
+    <Content Include="Views\SuggestEvent\SuggestEventView.cshtml" />
+    <Content Include="Views\SuggestEventManager\ManagerSuggestView.cshtml" />
+    <Content Include="Views\SuggestEventManager\DetailSuggest.cshtml" />
+    <Content Include="Views\SuggestEvent\ConfirmEvent.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="DocumentUploads\" />
+    <Folder Include="images\banner\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

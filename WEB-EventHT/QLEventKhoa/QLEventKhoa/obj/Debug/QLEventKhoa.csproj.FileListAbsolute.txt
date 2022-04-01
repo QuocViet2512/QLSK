@@ -1,0 +1,489 @@
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll.config
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.pdb
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe.config
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.rsp
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe.config
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.rsp
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Managed.Core.targets
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.AppContext.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Collections.Immutable.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Console.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Compression.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Reflection.Metadata.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.AccessControl.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Claims.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Principal.Windows.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.ValueTuple.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XmlDocument.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe.config
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.rsp
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe.config
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.Web.Infrastructure.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Rotativa.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\WebGrease.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.pdb
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CoreCompileInputs.cache
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CopyComplete
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.dll
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.pdb
+D:\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csprojAssemblyReference.cache
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll.config
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.pdb
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe.config
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.rsp
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe.config
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.rsp
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.AppContext.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Collections.Immutable.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Console.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Compression.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Reflection.Metadata.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.AccessControl.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Claims.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.ValueTuple.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe.config
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.rsp
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe.config
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.Web.Infrastructure.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Rotativa.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\WebGrease.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.pdb
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csprojAssemblyReference.cache
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CoreCompileInputs.cache
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CopyComplete
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.dll
+E:\Đồ án chuyên ngành\new\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.pdb
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll.config
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.pdb
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe.config
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.rsp
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe.config
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.rsp
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.AppContext.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Collections.Immutable.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Console.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Compression.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Reflection.Metadata.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.AccessControl.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Claims.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Principal.Windows.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.ValueTuple.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe.config
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.rsp
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe.config
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.Web.Infrastructure.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Rotativa.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\WebGrease.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.pdb
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csprojAssemblyReference.cache
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CoreCompileInputs.cache
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CopyComplete
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.dll
+E:\Đồ án chuyên ngành\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.pdb
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll.config
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.pdb
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe.config
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.rsp
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe.config
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.rsp
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Managed.Core.targets
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.AppContext.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Collections.Immutable.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Console.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Compression.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Reflection.Metadata.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.AccessControl.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Claims.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Principal.Windows.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.ValueTuple.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XmlDocument.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe.config
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.rsp
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe.config
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.Web.Infrastructure.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Rotativa.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\WebGrease.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.pdb
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csprojAssemblyReference.cache
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CoreCompileInputs.cache
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CopyComplete
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.dll
+E:\DACN_T12\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll.config
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\QLEventKhoa.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.exe.config
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csc.rsp
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.exe.config
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\csi.rsp
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.Managed.Core.targets
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.AppContext.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Collections.Immutable.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Console.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Compression.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.AccessControl.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.IO.Pipes.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Reflection.Metadata.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.AccessControl.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Claims.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Security.Principal.Windows.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.ValueTuple.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XmlDocument.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.exe.config
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\vbc.rsp
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\roslyn\VBCSCompiler.exe.config
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.Web.Infrastructure.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Rotativa.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\WebGrease.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\BCrypt.Net-Next.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\EntityFramework.SqlServer.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\PagedList.Mvc.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Buffers.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Memory.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Numerics.Vectors.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Helpers.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Mvc.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Optimization.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.Razor.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Deployment.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\System.Web.WebPages.Razor.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Newtonsoft.Json.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Antlr3.Runtime.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csprojAssemblyReference.cache
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CoreCompileInputs.cache
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.csproj.CopyComplete
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\obj\Debug\QLEventKhoa.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Auth.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Auth.PlatformServices.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Core.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Drive.v3.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.PlatformServices.dll
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Auth.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Auth.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Core.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Core.xml
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Drive.v3.pdb
+E:\QLSK talent\WEB-EventHT\QLEventKhoa\QLEventKhoa\bin\Google.Apis.Drive.v3.xml

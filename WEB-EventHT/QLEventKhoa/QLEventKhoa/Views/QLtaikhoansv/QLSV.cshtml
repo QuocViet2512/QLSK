@@ -1,0 +1,492 @@
+﻿@model QLEventKhoa.ViewModels.listsv
+@{
+    ViewBag.Title = "QLSV";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lý sinh viên
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD", "HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("QLSV", "QLTaikhoansv")">Quản lý sinh viên </a></li>
+    </ol>
+</section>
+
+<style>
+    .cover {
+        width: 100%;
+        margin: 0;
+    }
+
+    .data-view {
+        width: 80%;
+        background-color: transparent;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .lable {
+        text-align: right;
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+
+    .input {
+        width: 300px;
+        float: right;
+        border-radius: 10px;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+
+    #success {
+        background: #ff3939;
+    }
+
+    #warning {
+        background: #ff3939;
+    }
+
+    #failure {
+        background: #ff3939;
+    }
+
+    .notify {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 0px;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        background: rgba(0,0,0,.6);
+        overflow: hidden;
+        transition: width .4s, height .4s;
+        border-radius: 15px;
+    }
+
+    #notifyType:before {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .activenoti {
+        height: 50px;
+        width: 60%;
+    }
+
+    .success:before {
+        Content: "Cập nhật thành công!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .warning:before {
+        Content: "Không có gì được cập nhật!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .failure:before {
+        Content: "Cập nhật thất bại, xin vui lòng thử lại !!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .up-cv {
+        width: 50px;
+        height: 35px;
+        margin-left: 5px;
+        background-color: deepskyblue;
+        color: black;
+        text-align: center
+    }
+
+</style>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+
+                        
+                        <button style="height:35px" onclick="location.reload()" data-toggle="tooltip" data-placement="right" title="Tải lại trang" class="btn btn-warning glyphicon glyphicon-refresh"></button>
+                    
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table style="margin-top:40px" id="tbqlsv" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th style="width:40px">Mã sinh viên </th>
+                                <th style="width:80px">Tên sinh viên</th>
+                                <th>Ngày sinh</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Lớp</th>
+                                <th>Khoa </th>
+                                <th>Lớp trưởng</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int rowNo = 0;}
+
+                            @foreach (var item in Model.lstst)
+                            {
+                                <tr>
+
+                                    <td class="text-center">@(rowNo += 1)</td>
+                                    <td id="tbstcode_@item.idSinhVien">@item.maSV</td>
+                                    <td id="tbstname_@item.idSinhVien">@item.tenSV</td>
+                                    <td id="tbstbd_@item.idSinhVien">@item.ngaySinhSV.ToShortDateString()</td>
+                                    <td id="tbstmail_@item.idSinhVien">@item.emailSV</td>
+                                    <td id="tbstphone_@item.idSinhVien">@item.phoneSV</td>
+                                    <td id="tbstclass_@item.idSinhVien">@item.tbLopHoc.tenLopHoc</td>
+                                    <td id="tbstfal_@item.idSinhVien">@item.tbKhoa.tenKhoa</td>
+                                    @if (item.isLopTruong == true)
+                                    {
+                                        <td class="text-center"> <b style="color:forestgreen" id="tbstlt_@item.idSinhVien">Lớp trưởng</b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><b style="color:tomato" id="tbstlt_@item.idSinhVien">Sinh viên</b> </td>
+                                    }
+                                    @if (item.statusSV == true)
+                                    {
+                                        <td class="text-center"> <b style="color:forestgreen" id="tbststt_@item.idSinhVien">Chưa tốt nghiệp</b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><b style="color:tomato" id="tbststt_@item.idSinhVien">Đã tốt nghiệp</b> </td>
+                                    }
+                                        <td style="width:140px">
+                                            <a class="btn btn-warning" style="width:80px" id="" data-toggle="modal" data-target="#fade_@item.idSinhVien" onclick="fistclass(@item.idSinhVien)">Chỉnh sửa</a>
+                                            @if ((Model.lstst.Where(p => p.idLopHoc == item.idLopHoc).FirstOrDefault(p => p.isLopTruong == true)) == null)
+                                            {
+                                                <a class="btn glyphicon glyphicon-arrow-up up-cv" data-toggle="tooltip" data-placement="top" title="Nâng @item.tenSV làm lớp trưởng" href="@Url.Action("update_cv", "QLTaikhoansv", new { id = item.idSinhVien })"></a>
+                                            }
+                                            @if (item.isLopTruong == true)
+                                            {
+                                                <a class="btn glyphicon glyphicon-arrow-down up-cv " data-toggle="tooltip" data-placement="top" title="Hạ @item.tenSV làm sinh viên" href="@Url.Action("update_cv", "QLtaikhoansv", new { id = item.idSinhVien })"></a>
+                                            }
+                                            <div class="modal fade" id="fade_@item.idSinhVien" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <center>
+                                                                <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA SINH VIÊN </h3>
+                                                                <b>@item.tenSV - @item.maSV</b>
+                                                            </center>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="cover">
+                                                                <datalist id="lst_class_@item.idSinhVien"></datalist>
+
+                                                                <div class="data-view">
+                                                                    <label class="lable"> Mã sinh viên:</label>
+                                                                    <input class="input" id="e_stcode_@item.idSinhVien" value="@item.maSV" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable"> Tên:</label>
+                                                                    <input class="input" id="e_stname_@item.idSinhVien" value="@item.tenSV" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable">Ngày sinh:</label>
+                                                                    <input class="input" id="e_stbd_@item.idSinhVien" value="@item.ngaySinhSV.ToShortDateString()" type="date" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable"> Email :</label>
+                                                                    <input class="input" id="e_stmail_@item.idSinhVien" value="@item.emailSV" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable">Số điện thoại:</label>
+                                                                    <input class="input" id="e_stphone_@item.idSinhVien" value="@item.phoneSV" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable">Khoa :</label>
+                                                                    <select id="e_stfal_@item.idSinhVien" class="input" onchange="getlstclass(@item.idSinhVien)">
+                                                                        @foreach (var k in Model.lstfal)
+                                                                        {
+                                                                            if (item.idKhoa == k.idKhoa)
+                                                                            {
+
+                                                                                <option selected value="@k.idKhoa">@k.tenKhoa</option>
+                                                                            }
+                                                                            else
+                                                                            {
+
+                                                                                <option value="@k.idKhoa">@k.tenKhoa</option>
+                                                                            }
+                                                                        }
+                                                                    </select>
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable"> Lớp :</label>
+                                                                    <input class="input" list="lst_class_@item.idSinhVien" id="e_stclass_@item.idSinhVien" value="@item.tbLopHoc.tenLopHoc" />
+                                                                </div>                                                       
+                                                                <div class="data-view">
+                                                                    <label class="lable">Trạng thái:</label>
+                                                                    <select id="e_ststt_@item.idSinhVien" class="input">
+                                                                        @if (item.statusSV == true)
+                                                                        {
+                                                                            <option value="false">Vô hiệu hóa</option>
+                                                                            <option selected value="true">Kích hoạt</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option selected value="false">Vô hiệu hóa</option>
+                                                                            <option value="true">Kích hoạt</option>
+                                                                        }
+                                                                    </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                                                            <button class="btn btn-success" aria-hidden="true" onclick="edit(@item.idSinhVien)">Lưu thay đổi</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã sinh viên </th>
+                                <th>Tên sinh viên</th>
+                                <th>Ngày sinh</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Lớp</th>
+                                <th>Khoa </th>
+                                <th>Lớp trưởng</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div><!-- /.box-body -->
+                <div id="clbg_nt" class="notify"><span id="notifyType" class=""></span></div>
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</section><!-- /.content -->
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h4 class="modal-title"> Quản lý nhà tổ chức</h4></center>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts{  
+    <script>
+        $('input').attr('autocomplete', 'off'); //tat tinh nang tu dong goi y
+
+        //sap xep - tim kiem bang 
+        $(function () {
+            $('#tbqlsv').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": true
+            });
+        });
+
+        //lay ds lop dau tien
+        function fistclass(id) {
+            var getfalid = document.getElementById("e_stfal_" + id).value;
+            $.ajax({
+                url: '/QLtaikhoansv/getlstclass',
+                type: "get",
+                data: { getfalid },
+                success: function (valuert) {
+                    if (valuert.code == 200) {                       
+                        var setat = "";
+                        $.each(valuert.data, function (i, item) {
+                            setat +=  '<option>' + item + '</option>';                          
+                        });
+                        document.getElementById("lst_class_" + id).innerHTML = setat;                     
+                    }
+                    if (valuert.code == 500) {
+                        alert("Có vấn đề trong quá trình lấy dữ liệu");
+                    }
+                }
+            });
+        }
+
+        //lay dslop theo khoa
+        function getlstclass(id) {
+            var getfalid = document.getElementById("e_stfal_" + id).value;
+            $.ajax({
+                url: '/QLtaikhoansv/getlstclass',
+                type: "get",
+                data: { getfalid },
+                success: function (valuert) {
+                    if (valuert.code == 200) {
+                        document.getElementById("e_stclass_" + id).value="";
+                        var setat = "";
+                        $.each(valuert.data, function (i, item) {
+                            let opt = '<option>' + item + '</option>';
+                            setat += opt;                         
+                        });
+                        document.getElementById("lst_class_" + id).innerHTML=setat;
+                        console.log(valuert.data)
+                    }
+                    if (valuert.code == 500) {
+                        alert(valuert.message);
+                    }
+                }
+            });
+        }
+
+        //ham chinh sua sinh vien 
+        function edit(id) {
+            var tbstcode = document.getElementById("tbstcode_" + id);
+            var tbstname = document.getElementById("tbstname_" + id);
+            var tbstbd = document.getElementById("tbstbd_" + id);
+            var tbstmail = document.getElementById("tbstmail_" + id);
+            var tbstphone = document.getElementById("tbstphone_" + id);
+            var tbstclass = document.getElementById("tbstclass_" + id);
+            var tbstfal = document.getElementById("tbstfal_" + id);           
+            var tbststt = document.getElementById("tbststt_" + id);
+
+            var e_stcode = document.getElementById("e_stcode_" + id).value;
+            var e_stname = document.getElementById("e_stname_" + id).value;
+            var e_stbd = document.getElementById("e_stbd_" + id).value;
+            var e_stmail = document.getElementById("e_stmail_" + id).value;
+            var e_stphone = document.getElementById("e_stphone_" + id).value;
+            var e_stclass = document.getElementById("e_stclass_" + id).value;
+            var e_stfal = document.getElementById("e_stfal_" + id).value;       
+            var e_ststt = document.getElementById("e_ststt_" + id).value;
+
+            var today = new Date();
+
+            const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            var check = false;
+            var options = document.getElementById('lst_class_' + id).options;
+            for (let i = 0; i < options.length; i++) {
+                if (e_stclass.trim() == options[i].innerText.trim()) {
+                    check = true;
+                }
+            }
+
+            if (e_stcode.length != 10) {
+                alert("Mã sinh viên phải có 10 kí tự ");
+                return;
+            }
+            else if (e_stname > 50 || e_stname < 3) {
+                alert("Tên không hợp lệ !");
+                return;
+            }
+            else if (today.getFullYear() - (e_stbd.slice(0, 4)) < 10) {
+                alert("Độ tuổi không hợp lệ, vui lòng chọn độ tuổi>10");
+                return;
+            }
+            else if (!re.test(e_stmail)) {
+                alert("Mail nhập vào không hợp lệ ");
+                return;
+            }
+            else if (e_stphone.length < 10 || e_stphone.length > 11 || isNaN(e_stphone) == true) {
+                alert("Số điện thoại không hợp lệ");
+                return;
+            }
+            else if (check == false) {
+                alert("Lớp này không tồn tại trong danh sách");
+                return;
+            }
+            else {
+                $.ajax({
+                    url: '/QLtaikhoansv/EditST',
+                    type: "POST",
+                    data: { id, e_stcode, e_stname, e_stbd, e_stmail, e_stphone, e_stclass, e_stfal, e_ststt },
+                    success: function (response) {
+                        if (response == "true") {
+                            $('#fade_' + id).modal("hide");
+                            tbstcode.innerText = e_stcode;
+                            tbstname.innerText = e_stname;
+                            tbstbd.innerText = e_stbd;
+                            tbstmail.innerText = e_stmail;
+                            tbstphone.innerText = e_stphone;
+                            tbstclass.innerText = e_stclass;
+                            tbstfal.innerText = $("#e_stfal_" + id + " option:selected").text();
+                            if (tbststt.innerText == "Chưa tốt nghiệp" && e_ststt == "false") {
+                                tbststt.innerText = "Đã tốt nghiệp"
+                                tbststt.style.color = "tomato"
+                            }
+                            if (tbststt.innerText == "Đã tốt nghiệp" && e_ststt == "true") {
+                                tbststt.innerText = "Chưa tốt nghiệp"
+                                tbststt.style.color = "forestgreen"
+                            }
+                            document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                            $(".notify").toggleClass("activenoti");
+                            $("#notifyType").toggleClass("success");
+                            setTimeout(function () {
+                                $(".notify").removeClass("activenoti");
+                                $("#notifyType").removeClass("success");
+                            }, 2000);
+                        }
+                        else if (response == "dontexist") {
+                            alert("Lớp " + e_stclass + " không tồn tại trong " + $("#e_stfal_" + id + " option:selected").text() + ", Thử lại !!");
+                        }
+                        else {
+                            $('#fade_' + id).modal("hide");
+                            document.getElementById("clbg_nt").style.backgroundColor = "rgba(255,152,60, 0.4)";
+                            $(".notify").toggleClass("activenoti");
+                            $("#notifyType").toggleClass("warning");
+                            setTimeout(function () {
+                                $(".notify").removeClass("activenoti");
+                                $("#notifyType").removeClass("warning");
+                            }, 2000);
+                        }
+                    },
+                    error: function (err) {
+                        $('#fade_' + id).modal("hide");
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("failure");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("failure");
+                        }, 2000);
+                    }
+                });
+            }
+        }
+    </script>
+}
+
+
+
+
+
+
+
+
+

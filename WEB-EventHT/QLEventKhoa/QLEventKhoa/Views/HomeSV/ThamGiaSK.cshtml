@@ -1,0 +1,62 @@
+﻿@model QLEventKhoa.Models.tbSuKien
+@using QLEventKhoa.Models
+
+@{
+    tbSinhVien sv = (tbSinhVien)Session["SV"];
+    tbSinhVien svv = new tbSinhVien();
+    svv.emailSV = sv.emailSV;
+    svv.phoneSV = sv.phoneSV;
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+<body>
+    <center style="margin-bottom:10px"><h4 class="modal-title">Xác nhận trước khi tham gia</h4></center>
+    @using (Html.BeginForm("ThamGiaSK", "HomeSV", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model=>model.idEvent)
+        @Html.HiddenFor(model=>model.ngayBatDau)
+        @Html.HiddenFor(model=>model.tenEvent)
+        <div class="form-group">
+            <b>Ngày bắt đầu sự kiện: </b>
+            @Model.ngayBatDau.ToString("dd-MM-yyyy HH:mm")
+        </div>
+        <div class="form-group">
+            <b>Nơi diễn ra: </b>
+            @Model.noiToChuc
+        </div>
+        <div class="form-group">
+            <b>  Họ và tên sinh viên tham gia:</b>
+            @sv.tenSV
+        </div>
+        <div class="form-group">
+            <b>MSSV:</b> @sv.maSV
+        </div>
+        <div class="form-group">
+            <b>Lớp:</b>
+            @sv.tbLopHoc.tenLopHoc - <b>Khoa: </b>@sv.tbKhoa.tenKhoa
+        </div>
+        <div class="form-group">
+            <b>Email liên lạc</b>
+            @Html.EditorFor(model => svv.emailSV, new { htmlAttributes = new { @class = "form-control",placeholder="Nhập Email liên lạc" ,required = "required", @maxlength = "50",@value= "sv.emailSV" } })
+            @Html.ValidationMessageFor(model => svv.emailSV, "", new { @class = "text-danger" })
+        </div>       
+        <div class="form-group">
+            <b>Số điện thoại liên lạc</b>
+            @Html.EditorFor(model => svv.phoneSV,new { htmlAttributes = new {@class="form-control",placeholder="Nhập số điện thoại liên lạc" ,required = "required",@value="@sv.phoneSV"} })
+            @Html.ValidationMessageFor(model => svv.phoneSV, "", new { @class = "text-danger" })
+        </div> 
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-weight:bold">Đóng</button>
+            <button type="submit" class="btn btn-success" onlick="ThamGiaSK();" style="margin-right:5px;font-weight:bold">Đăng ký tham gia</button>
+        </div>
+    }
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

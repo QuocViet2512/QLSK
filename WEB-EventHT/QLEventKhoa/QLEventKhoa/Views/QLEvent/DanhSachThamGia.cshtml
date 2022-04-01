@@ -1,0 +1,126 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbThamGiaEvent>
+@{
+    ViewBag.Title = "Danh sách tham gia sự kiện";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1 style="text-align:center">
+        Danh sách tham gia sự kiện
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href=@Url.Action("DanhSachThamGia","QLEvent")>Danh sách tham gia</a></li>
+    </ol>
+</section>
+
+
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <div class="box">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                     <a href="@Url.Action("DanhSachEvent","QLEvent")">Quay về danh sách sự kiện </a>
+                    }
+                    <div>
+                        <center>
+                            <p style="font-size:20px;font-weight:bold">@ViewBag.tenSK</p>
+                        </center>
+                        <a href="@Url.Action("printDS","QLEvent",new {id=Model.FirstOrDefault().idEvent })" type="button" class="btn btn-success">In danh sách tham gia</a>
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tbThamGiaSK" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã sinh viên</th>
+                                <th>Tên sinh viên</th>
+                                <th>Khoa</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Trạng thái xét duyệt</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int row = 0;}
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@(row += 1)</td>
+                                    <td>@item.maSV</td>
+                                    <td>@item.tenSV</td>
+                                    <td>@item.tbSinhVien.tbKhoa.tenKhoa</td>
+                                    <td>@item.emailSV</td>
+                                    <td>@item.phoneSV</td>
+                                    <td>
+                                        @if (item.statusThamGia == true)
+                                        {
+                                            <b style="color:red">Đã xác đăng ký</b>
+                                        }
+                                        else
+                                        {
+                                            <b style="color:blue">Chưa xác đăng ký</b>
+                                        }
+                                    </td>
+                                    <td>
+                                        @using (Html.BeginForm("XacNhanTG", "QLEvent", new { id = item.idThamGiaEvent }))
+                                        {
+                                            if (item.statusThamGia == true)
+                                            {
+                                                <button type="submit" class="btn btn-warning btn-sm" style="font-weight:bold">Hủy xác nhận tham gia</button>
+                                            }
+                                            else
+                                            {
+                                                <button type="submit" class="btn btn-success btn-sm" style="font-weight:bold">Xác nhận tham gia</button>
+                                            }
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã sinh viên</th>
+                                <th>Tên sinh viên</th>
+                                <th>Khoa</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Trạng thái xét duyệt</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</section>
+
+
+<script>
+    //datatable
+    $(function () {
+        $('#tbThamGiaSK').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": false,
+            "autoWidth": true,
+            "responsive": true,
+        });
+    });
+</script>
+

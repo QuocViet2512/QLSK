@@ -1,0 +1,429 @@
+﻿
+@model IEnumerable<QLEventKhoa.Models.tbKhoa>
+
+@using QLEventKhoa.Models;
+@{
+    /**/
+    ViewBag.Title = "Quản lý Khoa";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lý Khoa
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("ListKhoa","QLKhoa")">Quản lý Khoa</a></li>
+    </ol>
+</section>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<style>
+    #success {
+        background: #ff3939;
+    }
+
+    #warning {
+        background: #ff3939;
+    }
+
+    #failure {
+        background: #ff3939;
+    }
+
+    .notify {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 0px;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        background: rgba(0,0,0,.6);
+        overflow: hidden;
+        transition: width .4s, height .4s;
+        border-radius: 15px;
+    }
+
+    #notifyType:before {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .activenoti {
+        height: 50px;
+        width:60%;
+    }
+
+    .success:before {
+        Content: "Cập nhật thành công!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .warning:before {
+        Content: "Không có gì được cập nhật!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .failure:before {
+        Content: "Cập nhật thất bại, xin vui lòng thử lại !!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .cover {
+        width: 100%;
+        margin: 0;
+    }
+
+    .data-view {
+        width: 80%;
+        background-color: transparent;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .lable {
+        text-align: right;
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+
+    .input {
+        width: 300px;
+        float: right;
+        border-radius: 10px;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+    .eye-info {
+        width: 50px;
+        height: 35px;
+        margin-left: 5px;
+        background-color: deepskyblue;
+        color: black;
+        text-align: center
+    }
+
+</style>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+
+                <div class="box-header">
+                    <button class="btn btn-success" id="AddKhoa"  data-toggle="modal" data-target="#fade_addnew">Thêm khoa mới</button>
+                    <button style="height:35px" onclick="location.reload()"  data-toggle="tooltip" data-placement="right" title="Tải lại trang" class="btn btn-warning glyphicon glyphicon-refresh"></button>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tbDSKhoa" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr style="text-align:center">
+                                <th>#</th>
+                                <th>Mã Khoa</th>
+                                <th>Tên Khoa</th>
+                                <th>Số lượng lớp</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="addnew_fal">
+                            @{int rowNo = 0;}
+                            @foreach (var item in Model.OrderBy(p=>p.idKhoa))
+                            {
+                                
+                            <tr id="indexcount">
+                                
+                                <td class="text-center">@(rowNo += 1)</td>
+                                <td>@item.maKHoa</td>
+                                <td id="tbfname_@item.idKhoa"> @item.tenKhoa</td>
+                                <td>@item.tbLopHocs.Count</td>
+                                @if (item.statusKhoa == true)
+                                {
+                                    <td class="text-center"> <b style="color:forestgreen" id="tbfstt_@item.idKhoa"> Đang hoạt động   </b></td>
+                                }
+                                else
+                                {
+                                    <td class="text-center"><b style="color:tomato" id="tbfstt_@item.idKhoa"> Vô hiệu hóa  </b> </td>
+                                }
+                                    <td style="width:200px;text-align:center">
+                                        <a class="btn btn-warning" style="width:135px" id="@item.idKhoa" data-toggle="modal" data-target="#fade_@item.idKhoa">Chỉnh sửa</a>
+                                        @if (item.tbLopHocs.Count > 0)
+                                        {
+                                            <a class="btn glyphicon glyphicon-eye-open eye-info " data-toggle="tooltip" data-placement="top" title="Xem danh sách Lớp học khoa @item.tenKhoa" href="@Url.Action("IndexLopHocSV","QLLophocsv",new {falid=item.idKhoa})"></a>
+                                        }
+                                        else
+                                        {
+                                            <a class="btn glyphicon glyphicon-eye-close eye-info"  data-toggle="tooltip" data-placement="top" title="Khoa này chưa có lớp nào"  href="#"></a>
+                                        }
+
+                                        <div class="modal fade" id="fade_@item.idKhoa" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <center>
+                                                            <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA KHOA</h3>
+                                                            <b>Khoa: @item.tenKhoa</b>
+                                                        </center>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p style="color:red;text-align:center" id="e_noti"></p>
+                                                        <label>Tên khoa: </label>
+                                                        <input id="faname_@item.idKhoa" value="@item.tenKhoa" style="border-radius:10px;width:200px;height:30px;padding-left:10px;" />
+                                                        <label style="margin-left:30px">Trạng thái </label>
+                                                        <select id="fastt_@item.idKhoa" style="width:150px;height:30px;border-radius:10px;margin-left:10px;padding-left:10px;">
+                                                            @if (item.statusKhoa == true)
+                                                            {
+                                                                <option value="false">Vô hiệu hóa</option>
+                                                                <option selected value="true">Kích hoạt</option>
+                                                            }
+                                                            else
+                                                            {
+                                                                <option selected value="false">Vô hiệu hóa</option>
+                                                                <option value="true">Kích hoạt</option>
+                                                            }
+                                                        </select>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                                                        <button class="btn btn-success" aria-hidden="true" onclick="edit(@item.idKhoa)">Lưu thay đổi</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                            </tr>
+                            }
+                          
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr style="text-align:center">
+                                <th>#</th>
+                                <th>Mã Khoa</th>
+                                <th>Tên Khoa</th>
+                                <th>Số lượng lớp</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div><!-- /.box-body -->
+                <div id="clbg_nt" class="notify"><span id="notifyType" class=""></span></div>
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</section><!-- /.content -->
+
+<div class="modal fade" id="fade_addnew" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">THÊM MỚI KHOA</h3>
+                </center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="cover">
+
+                    <div class="data-view">
+                        <label class="lable"> Mã khoa:</label>
+                        <input class="input" id="a_falcode" placeholder="Nhập mã khoa" />
+                    </div>
+                    <div class="data-view">
+                        <label class="lable"> Tên khoa:</label>
+                        <input class="input" id="a_falname" placeholder="Nhập tên khoa" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-success" aria-hidden="true" onclick="addnewfal()">Tạo mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    var row =@rowNo + 1;
+    //datatable
+    $(function () {
+        $('#tbDSKhoa').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+
+    //----------------------------Thêm mới---------------------------------------//
+    function addnewfal() {
+        var a_falcode = document.getElementById("a_falcode").value;
+        var a_falname = document.getElementById("a_falname").value;  
+        var indexcount = row;
+        row = indexcount+ 1;
+        if (a_falcode.length != 5) {
+            alert("Mã khoa bắt buộc phải có 5 kí tự");
+        }
+        else if (a_falname.length < 10) {
+            alert("Tên khoa phải có nhiều hơn 10 kí tự");
+        }
+        else {
+                $.ajax({
+                    url: '/QLkhoa/Addkhoa',
+                    type: "POST",
+                    data: { a_falcode, a_falname },
+                    success: function (valuert) {
+                        if (valuert.code == 200) {
+                            var falid = valuert.idkhoa;
+                            var a_new = ' <tr id="indexcount" style="background-color:#c4c43b" >'
+                                + ' <td class="text-center">' + indexcount + '</td>'
+                                + '<td>' + a_falcode + '</td>'
+                                + '<td id="tbfname_' + falid + '">' + a_falname + '</td>'
+                                + '<td>0</td>'
+                                + '<td class="text-center"> <b style="color:forestgreen" id="tbfstt_' + falid + '"> Đang hoạt động </b></td>'
+                                + '<td style="width:200px;text-align:center">'
+                                + '<a class="btn btn-warning" style="width:135px" id="" data-toggle="modal" data-target="#fade_' + falid + '">Chỉnh sửa</a>'
+                                + '<a class="btn glyphicon glyphicon-eye-close eye-info" data-toggle="tooltip" data-placement="top" title="Khoa này chưa có lớp nào" href = "#" ></a >'
+                                + '<div class="modal fade" id="fade_' + falid + '" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">'
+                                + '<div class="modal-dialog" role="document">'
+                                + '<div class="modal-content">'
+                                + '<div class="modal-header">'
+                                + '<center>'
+                                + '<h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA KHOA</h3>'
+                                + '<b>Khoa: ' + a_falname + '</b>'
+                                + '</center>'
+                                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                                + '<span aria-hidden="true">&times;</span>'
+                                + '</button>'
+                                + '</div>'
+                                + '<div class="modal-body">'
+                                + '<label>Tên khoa: </label>'
+                                + '<input id="faname_' + falid + '" value="' + a_falname + '" style="border-radius:10px;width:200px;height:30px;padding-left:10px;" />'
+                                + '<label style="margin-left:30px">Trạng thái </label>'
+                                + '<select id="fastt_' + falid + '" style="width:150px;height:30px;border-radius:10px;margin-left:10px;padding-left:10px;">'
+                                + '<option value="false">Vô hiệu hóa</option>'
+                                + '<option selected value="true">Kích hoạt</option>'
+                                + '</select>'
+                                + '</div >'
+                                + '<div class="modal-footer">'
+                                + '<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>'
+                                + '<button class="btn btn-success" aria-hidden="true" onclick="edit(' + falid + ')">Lưu thay đổi</button>'
+                                + '</div>'
+                                + ' </div >'
+                                + '</div >'
+                                + '</div >'
+                                + '</td >'
+                                + '</tr >'
+                            document.getElementById("addnew_fal").insertAdjacentHTML("afterbegin",a_new);
+                            document.getElementById("a_falcode").value = "";
+                            document.getElementById("a_falname").value = "";
+                            $('#fade_addnew').modal("hide");
+                            document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                            $(".notify").toggleClass("activenoti");
+                            $("#notifyType").toggleClass("success");
+                            setTimeout(function () {
+                                $(".notify").removeClass("activenoti");
+                                $("#notifyType").removeClass("success");
+                            }, 2000);
+                        }
+                        if (valuert.code == 500) {
+                            alert(valuert.msg)
+                        }
+                    }, error: function () {
+                        $('#fade_addnew').modal("hide");
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("failure");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("failure");
+                        }, 2000);
+                    }
+                });
+
+            }
+    }
+
+    //--------------------------------chỉnh sửa --------------------------------------//
+
+    function edit(id) {
+        var e_fname = document.getElementById("faname_" + id).value;
+        var e_fstt = document.getElementById("fastt_" + id).value;
+        var tbfname = document.getElementById("tbfname_" + id);
+        var tbfstt = document.getElementById("tbfstt_" + id)
+        if (e_fname.length < 10) {
+            alert("Tên khoa phải có nhiều hơn 10 kí tự");
+        }
+        else {
+            $('#fade_' + id).modal("hide");
+            $.ajax({
+                url: '/QLkhoa/Editkhoa',
+                type: "POST",
+                data: { id, e_fname, e_fstt },
+                success: function (response) {
+                    if (response == "true") {
+                        tbfname.innerText = e_fname;
+                        if (tbfstt.innerText == "Đang hoạt động" && e_fstt == "false") {
+                            tbfstt.innerText = "Vô hiệu hóa"
+                            tbfstt.style.color = "tomato"
+                        }
+                        if (tbfstt.innerText == "Vô hiệu hóa" && e_fstt == "true") {
+                            tbfstt.innerText = "Đang hoạt động"
+                            tbfstt.style.color = "forestgreen"
+                        }
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("success");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("success");
+                        }, 2000);
+                    }
+
+                    if (response=="false") {
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(255,152,60, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("warning");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("warning");
+                        }, 2000);
+                    }
+                    if (response == "cantremove") {
+                        alert('Không thể vô hiệu hóa cho khoa này bởi đang còn lớp học phụ thuộc, hãy kiểm tra lại!')
+                    }
+                },
+                error: function (err) {
+                    $('#fade_' + id).modal("hide");
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+        }
+    }
+</script>

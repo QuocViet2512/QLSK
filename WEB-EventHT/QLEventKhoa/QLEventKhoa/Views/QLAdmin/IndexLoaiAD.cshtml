@@ -1,0 +1,124 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbLoaiAdmin>
+@{
+    ViewBag.Title = "Danh sách loại admin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lý loại admin
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("IndexLoaiAD","QLAdmin")">Quản lý loại admin</a></li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+
+        <div class="col-xs-12">
+
+            <div class="box">
+
+                <div class="box-header">
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                    <input type="button" class="btn btn-success" id="addLoaiAD" value="Thêm loại Admin" onclick="addLoaiAD();" />
+                    @if (TempData["temp"] != null)
+                    {
+                        <b style="margin-left:30px">@TempData["temp"]</b>
+                    }
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="LoaiAd" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Tên loại admin</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int rowNo = 0;}
+                            @foreach (var item in Model)
+                            {
+                            <tr>
+
+                                <td class="text-center">@(rowNo += 1)</td>
+                                <td>@item.tenLoaiAD</td>
+                                <td>@item.statusLAD</td>
+
+                                <td style="width:300px;text-align:center">
+                                    <a class="btn btn-warning" style="width:135px" id="@item.idLoaiAD" onclick="editLoaiAD(this.id)">Chỉnh sửa</a>
+                                    <a type="button" style="margin-left:5px" href="@Url.Action("statusLoaiAD", "QLAdmin", new { id = item.idLoaiAD })" class="btn btn-danger">Thay đổi trạng thái</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                           <tfoot class="alert-info">
+                               <tr>
+                                   <th>#</th>
+                                   <th>Tên loại admin</th>
+                                   <th>Trạng thái</th>
+                                   <th>Thao tác</th>
+                               </tr>
+                        </tfoot> 
+                    </table>
+                </div><!-- /.box-body -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+
+</section><!-- /.content -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h4 class="modal-title"> Quản lý loại Admin</h4></center>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+     $(function () {
+         $('#LoaiAd').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+
+
+    function addLoaiAD() {
+            $.get("@Url.Action("addLoaiAD", "QLAdmin")",
+                function (data) {
+                    $('.modal-body').html(data);
+            });
+              $('#myModal').modal({
+               backdrop: 'static',
+              keyboard: false
+              })
+              $("#myModal").modal("show");
+
+       }
+
+    function editLoaiAD(id) {
+              $.get("@Url.Action("editLoaiAD", "QLAdmin")/" + id,
+                function (data) {
+                    $('.modal-body').html(data);
+            });
+               $('#myModal').modal({
+               backdrop: 'static',
+              keyboard: false
+               })
+               $("#myModal").modal("show");
+       }
+</script>

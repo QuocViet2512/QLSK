@@ -1,0 +1,107 @@
+﻿@model QLEventKhoa.Models.tbLienHe
+@{
+    ViewBag.Title = "Phản hồi sinh viên";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@using QLEventKhoa.Models
+
+<section class="content-header">
+    @*<h1>
+            Phản hồi của sinh viên
+        </h1>*@
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD","HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("PhanHoiLH","QLLienHe")">Phản hồi liên hệ</a></li>
+    </ol>
+</section>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("PhanHoiLH", "QLLienHe", FormMethod.Post))
+            {
+                @Html.HiddenFor(model => model.idLienHe)
+                @Html.HiddenFor(model => model.maSV)
+                @Html.HiddenFor(model => model.tenSV)
+                @Html.HiddenFor(model => model.emailSV)
+                @Html.HiddenFor(model => model.phoneSV)
+                @Html.HiddenFor(model => model.tieuDeLH)
+                @Html.HiddenFor(model => model.noiDungLH)
+                @Html.HiddenFor(model => model.idLoaiLH)
+
+                <div role="form">
+                    <div class="box-body">
+                        <center>
+                            <h4><b>Tiêu đề: @Model.tieuDeLH- Loại: @Model.tbLoaiLH.tenLoaiLH</b></h4>
+                        </center>
+                        <table class="tablemail" style="margin-top: 30px;">
+
+                            <tr>
+                                <th>Tên Sinh Viên: @Model.tenSV</th>
+                                <th>Mã sinh viên:@Model.maSV</th>
+                                <th style="text-align: right;">Email:<i style="margin-right:20px">@Model.emailSV</i>SĐT:<i>@Model.phoneSV</i></th>
+
+                            </tr>
+
+                            <tr>
+
+                                <th colspan="3">Nội dung</th>
+
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: left;">
+                                    <p>
+                                        @Html.Raw(Model.noiDungLH)
+                                    </p>
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th colspan="3">
+                                    Trả lời
+                                </th>
+                            </tr>
+                            <tr>
+                                <td colspan="3" style="text-align: center;">
+                                    @Html.TextAreaFor(model => model.noiDungPH, new { @class = "form-control", maxlength = "3500" })
+                                    <script>
+                                        $(function () {
+
+                                            CKEDITOR.replace('noiDungPH');
+                                        });
+                                    </script>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">
+                                    <center>
+                                        <button type="submit" class="fa fa-paper-plane btn btn-primary" style="width: 120px;height: 40px;margin-left: 10px;"><b> Gửi</b></button>
+                                        <a href="@Url.Action("DSPhanHoi","QLLienHe")"  class="fa fa-reply btn btn-danger" style="background-color: lightcoral; width: 120px;height: 40px;margin-right: 10px;padding-top:13px"> <b> Trở về </b></a>
+                                    </center>
+                                </td>
+                            </tr>
+                        </table>
+                    </div><!-- /.box-body -->
+                </div>
+            }
+        </div><!-- /.col-->
+    </div><!-- ./row -->
+</section><!-- /.content -->
+
+<style>
+    .tablemail {
+        font-family: arial, sans-serif;
+        width: 100%;
+    }
+
+        .tablemail td, th {
+            border: none;
+            text-align: left;
+            padding: 8px;
+        }
+
+        .tablemail tr {
+            background-color: white;
+        }
+</style>

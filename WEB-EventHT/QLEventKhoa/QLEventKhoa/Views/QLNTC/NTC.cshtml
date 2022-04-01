@@ -1,0 +1,516 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbNhaToChuc>
+
+@{
+    ViewBag.Title = "Quản lý nhà tổ chức";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<section class="content-header">
+    <h1 style="text-align:center">
+        Quản lý nhà tổ chức
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD", "HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("NTC", "QLNTC")">Nhà tổ chức</a></li>
+    </ol>
+</section>
+
+<style>
+    .cover {
+        width: 100%;
+        margin: 0;
+    }
+
+    .data-view {
+        width: 80%;
+        background-color: transparent;
+        height: 40px;
+        margin: 0 auto;
+    }
+
+    .lable {
+        text-align: right;
+        margin-right: 30px;
+        margin-top: 10px;
+    }
+
+    .input {
+        width: 300px;
+        float: right;
+        border-radius: 10px;
+        height: 30px;
+        margin-top: 10px;
+        padding-left: 10px;
+    }
+    #success {
+        background: #ff3939;
+    }
+
+    #warning {
+        background: #ff3939;
+    }
+
+    #failure {
+        background: #ff3939;
+    }
+
+    .notify {
+        
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 0px;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        background: rgba(0,0,0,.6);
+        overflow: hidden;
+        transition: width .4s, height .4s;
+        border-radius: 15px;
+    }
+
+    #notifyType:before {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .activenoti {
+        height: 50px;
+        width: 60%;
+    }
+
+    .success:before {
+        Content: "Cập nhật thành công!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .warning:before {
+        Content: "Không có gì được cập nhật!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .failure:before {
+        Content: "Cập nhật thất bại, xin vui lòng thử lại !!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+    .eye-info {
+        width: 50px;
+        height: 35px;
+        margin-left: 5px;
+        background-color: deepskyblue;
+        color: black;
+        text-align: center
+    }
+
+</style>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#fade_addnewntc">Thêm nhà tổ chức mới</button>
+                    <button style="height:35px" onclick="location.reload()"  data-toggle="tooltip" data-placement="right" title="Tải lại trang" class="btn btn-warning glyphicon glyphicon-refresh"></button>
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <table id="tbntc" class="table table-bordered table-hover">
+                        <thead class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã nhà tổ chức</th>
+                                <th>Tên nhà tổ chức</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Số sự kiện</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </thead>
+                        <tbody id="addnew_ntc">
+                            @{int rowNo = 0;}
+                            @foreach (var item in Model.OrderBy(p=>p.idNhaTC))
+                            {
+                                <tr>
+                                    <td class="text-center">@(rowNo += 1)</td>
+                                    <td>@item.maNTC</td>
+                                    <td id="tbntcname_@item.idNhaTC">@item.tenNTC</td>
+                                    <td id="tbntcmail_@item.idNhaTC">@item.emailNTC</td>
+                                    <td id="tbntcphone_@item.idNhaTC">@item.phoneNTC</td>
+                                    <td>@item.tbSuKiens.Count</td>
+
+                                    @if (item.statusNTC == true)
+                                    {
+                                        <td class="text-center"> <b style="color:forestgreen" id="tbntcstt_@item.idNhaTC"> Đang hoạt động   </b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><b style="color:tomato" id="tbntcstt_@item.idNhaTC"> Vô hiệu hóa  </b> </td>
+                                    }
+                                        <td style="width:210px;text-align:center">
+                                            <a class="btn btn-warning" style="width:135px" id="@item.idNhaTC" data-toggle="modal" data-target="#fade_@item.idNhaTC">Chỉnh sửa</a>
+                                            @if (item.tbSuKiens.Count > 0)
+                                            {
+                                                <a class="btn glyphicon glyphicon-eye-open eye-info " data-toggle="tooltip" data-placement="top" title="Xem danh sách sự kiện của @item.tenNTC" href="@Url.Action("danhsachevent","QLevent",new {ntcid=item.idNhaTC})"></a>
+                                            }
+                                            else
+                                            {
+                                                <a class="btn glyphicon glyphicon-eye-close eye-info " data-toggle="tooltip" data-placement="top" title="Nhà tổ chức này chưa có sự kiện nào " href="#"></a>
+                                            }
+
+                                            <div class="modal fade" id="fade_@item.idNhaTC" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <center>
+                                                                <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA NHÀ TỔ CHỨC</h3>
+                                                                <b>@item.tenNTC</b>
+                                                            </center>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="cover">
+
+                                                                <div class="data-view">
+                                                                    <label class="lable"> Tên nhà tổ chức:</label>
+                                                                    <input class="input" id="e_ntcname_@item.idNhaTC" value="@item.tenNTC" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable"> Email nhà tổ chức :</label>
+                                                                    <input class="input" id="e_ntcmail_@item.idNhaTC" value="@item.emailNTC" />
+                                                                </div>
+                                                                <div class="data-view">
+                                                                    <label class="lable">Số điện thoại:</label>
+                                                                    <input class="input" id="e_ntcphone_@item.idNhaTC" value="@item.phoneNTC" />
+                                                                </div>
+
+                                                                <div class="data-view">
+                                                                    <label class="lable">Trạng thái:</label>
+                                                                    <select id="e_ntcstt_@item.idNhaTC" class="input">
+                                                                        @if (item.statusNTC == true)
+                                                                        {
+                                                                            <option value="false">Vô hiệu hóa</option>
+                                                                            <option selected value="true">Kích hoạt</option>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <option selected value="false">Vô hiệu hóa</option>
+                                                                            <option value="true">Kích hoạt</option>
+                                                                        }
+                                                                    </select>
+                                                                </div>
+
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                                                            <button class="btn btn-success" aria-hidden="true" onclick="edit(@item.idNhaTC)">Lưu thay đổi</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                </tr>
+                            }
+                        </tbody>
+                        <tfoot class="alert-info">
+                            <tr>
+                                <th>#</th>
+                                <th>Mã nhà tổ chức</th>
+                                <th>Tên nhà tổ chức</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Số sự kiện</th>
+                                <th>Trạng thái</th>
+                                <th>Thao tác</th>
+                            </tr>
+                        </tfoot>
+                    </table>
+
+                </div><!-- /.box-body -->
+                <div id="clbg_nt" class="notify"><span id="notifyType" class=""></span></div>
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</section><!-- /.content -->
+
+<div class="modal fade" id="fade_addnewntc" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <center>
+                    <h3 class="modal-title" id="ModalLabel" style="font-weight:bold">THÊM MỚI NHÀ TỔ CHỨC</h3>
+                </center>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="cover">
+                    <div class="data-view">
+                        <label class="lable"> Mã nhà tổ chức:</label>
+                        <input class="input" id="a_ntccode"  placeholder="Nhập mã nhà tổ chức" />
+                    </div>
+                    <div class="data-view">
+                        <label class="lable"> Tên nhà tổ chức:</label>
+                        <input class="input" id="a_ntcname" placeholder="Nhập tên nhà tổ chức" />
+                    </div>
+                    <div class="data-view">
+                        <label class="lable"> Email nhà tổ chức :</label>
+                        <input class="input" id="a_ntcmail" placeholder="Nhập Email nhà tổ chức" />
+                    </div>
+                    <div class="data-view">
+                        <label class="lable">Số điện thoại:</label>
+                        <input class="input" id="a_ntcphone" placeholder="Nhập số điện thoại nhà tổ chức" />
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>
+                <button class="btn btn-success" aria-hidden="true" onclick="Addntc()">Tạo mới</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <center><h4 class="modal-title"> Quản lý nhà tổ chức</h4></center>
+            </div>
+            <div class="modal-body">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var row = @rowNo+1
+    $(function () {
+        $('#tbntc').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+
+   //----------------------------Thêm mới---------------------------------------//
+    function Addntc() {
+        const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        var a_ntccode = document.getElementById("a_ntccode").value;
+        var a_ntcname = document.getElementById("a_ntcname").value;
+        var a_ntcmail = document.getElementById("a_ntcmail").value;
+        var a_ntcphone = document.getElementById("a_ntcphone").value;
+        var indexcount = row;
+        row = indexcount + 1;
+        if (a_ntccode.length != 5) {
+            alert("Mã khoa bắt buộc phải có 5 kí tự");
+            return;
+        }
+        else if (a_ntcname.length < 10) {
+            alert("Tên khoa phải có nhiều hơn 10 kí tự");
+            return;
+        }
+        else if (!re.test(a_ntcmail)) {
+            alert("Mail nhập vào không hợp lệ ");
+            return;
+        }
+        else if (a_ntcphone.length < 10 || a_ntcphone.length > 11 || isNaN(a_ntcphone) == true) {
+            alert("Số điện thoại không hợp lệ");
+            return;
+        }
+        else {
+                $.ajax({
+                    url: '/QLNTC/AddNTC',
+                    type: "POST",
+                    data: { a_ntccode, a_ntcname, a_ntcmail, a_ntcphone },
+                    success: function (valuert) {
+                        if (valuert.code == 200) {
+                            var ntcid = valuert.idNTC;
+                            var a_new = ' <tr id="indexcount" style="background-color:#c4c43b">'
+                                + '<td class="text-center">' + indexcount + '</td>'
+                                + '<td>' + a_ntccode + '</td>'
+                                + '<td id="tbntcname_' + ntcid + '">' + a_ntcname + '</td>'
+                                + '<td id="tbntcmail_' + ntcid + '">' + a_ntcmail + '</td>'
+                                + '<td id="tbntcphone_' + ntcid + '">' + a_ntcphone + '</td>'
+                                + '<td>0</td>'
+                                + '<td class="text-center"> <b style="color:forestgreen" id="tbntcstt_' + ntcid + '"> Đang hoạt động</b></td>'
+                                + '<td style="width:210px;text-align:center">'
+                                + '<a class="btn btn-warning" style="width:135px" id="" data-toggle="modal" data-target="#fade_' + ntcid + '">Chỉnh sửa</a>'
+                                + '<a class="btn glyphicon glyphicon-eye-close eye-info" data-toggle="tooltip" data-placement="top" title="Nhà tổ chức này chưa có sự kiện nào " href = "#" ></a >'
+                                + '<div class="modal fade" id="fade_' + ntcid + '" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">'
+                                + '<div class="modal-dialog" role="document">'
+                                + '<div class="modal-content">'
+                                + '<div class="modal-header">'
+                                + '<center>'
+                                + '<h3 class="modal-title" id="ModalLabel" style="font-weight:bold">CHỈNH SỬA NHÀ TỔ CHỨC</h3>'
+                                + '<b>Khoa: ' + a_ntcname + '</b>'
+                                + '</center>'
+                                + '<button type="button" class="close" data-dismiss="modal" aria-label="Close">'
+                                + '<span aria-hidden="true">&times;</span>'
+                                + '</button>'
+                                + '</div>'
+                                + '<div class="modal-body">'
+                                + '<div class="cover">'
+                                + '<div class="data-view">'
+                                + '<label class="lable"> Tên nhà tổ chức:</label>'
+                                + '<input class="input" id="e_ntcname_' + ntcid + '" value="' + a_ntcname + '" />'
+                                + '</div>'
+                                + '<div class="data-view">'
+                                + '<label class="lable"> Email nhà tổ chức :</label>'
+                                + '<input class="input" id="e_ntcmail_' + ntcid + '" value="' + a_ntcmail + '" />'
+                                + '</div>'
+                                + '<div class="data-view">'
+                                + '<label class="lable">Số điện thoại:</label>'
+                                + '<input class="input" id="e_ntcphone_' + ntcid + '" value="' + a_ntcphone + '" />'
+                                +'</div>'
+                                + '<div class="data-view">'
+                                + '<label class="lable">Trạng thái:</label>'
+                                + '<select id="e_ntcstt_' + ntcid + '" class="input">'                                                               
+                                + '<option value="false">Vô hiệu hóa</option>'
+                                + '<option selected value="true">Kích hoạt</option>'                                                                       
+                                + '</select>'
+                                + '</div>'
+                                + '</div>'
+                                + '</div >'
+                                + '<div class="modal-footer">'
+                                + '<button type="button" class="btn btn-primary" data-dismiss="modal">Đóng</button>'
+                                + '<button class="btn btn-success" aria-hidden="true" onclick="edit(' + ntcid + ')">Lưu thay đổi</button>'
+                                + '</div>'
+                                + ' </div >'
+                                + '</div >'
+                                + '</div >'
+                                + '</td >'
+                                + '</tr >'                      
+                            document.getElementById("addnew_ntc").insertAdjacentHTML("afterbegin",a_new);
+                            document.getElementById("a_ntccode").value = "";
+                            document.getElementById("a_ntcname").value = "";
+                            document.getElementById("a_ntcmail").value = "";
+                            document.getElementById("a_ntcphone").value = "";
+                            $('#fade_addnewntc').modal("hide");
+                            document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                            $(".notify").toggleClass("activenoti");
+                            $("#notifyType").toggleClass("success");
+                            setTimeout(function () {
+                                $(".notify").removeClass("activenoti");
+                                $("#notifyType").removeClass("success");
+                            }, 2000);
+                        }
+                        if (valuert.code == 500) {
+                            alert(valuert.msg)
+                        }
+                    }, error: function () {
+                        $('#fade_addnewntc').modal("hide");
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("failure");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("failure");
+                        }, 2000);
+                    }
+                });
+
+            }
+    }
+
+    //--------------------------------chỉnh sửa --------------------------------------//
+
+    function edit(id) {
+        var e_ntcname = document.getElementById("e_ntcname_" + id).value;
+         var e_ntcmail = document.getElementById("e_ntcmail_"+id).value;
+         var e_ntcphone = document.getElementById("e_ntcphone_"+id).value;
+        var e_ntcstt = document.getElementById("e_ntcstt_" + id).value;
+
+         var tbntcname = document.getElementById("tbntcname_" + id);
+         var tbntcmail = document.getElementById("tbntcmail_" + id);
+         var tbntcphone = document.getElementById("tbntcphone_"+id);
+        var tbntcstt = document.getElementById("tbntcstt_" + id);
+ 
+        const re = /^(([^<>()[\]\\.,;:\s@@\"]+(\.[^<>()[\]\\.,;:\s@@\"]+)*)|(\".+\"))@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (e_ntcname.length < 10) {
+            alert("Tên khoa phải có nhiều hơn 10 kí tự ");
+            return;
+        }
+        else if (!re.test(e_ntcmail)) {
+            alert("Mail nhập vào không hợp lệ ");
+            return;
+        }
+        else if (e_ntcphone.length < 10 || e_ntcphone.length >11 || isNaN(e_ntcphone) == true) {
+            alert("Số điện thoại không hợp lệ");
+            return;
+        }
+        else {
+            $('#fade_' + id).modal("hide");
+            $.ajax({
+                url: '/QLNTC/EditNTC',
+                type: "POST",
+                data: { id, e_ntcname, e_ntcmail, e_ntcphone, e_ntcstt },
+                success: function (response) {
+                    if (response == "true") {
+                        tbntcname.innerText = e_ntcname;
+                        tbntcmail.innerText = e_ntcmail;
+                        tbntcphone.innerText = e_ntcphone;
+                        if (tbntcstt.innerText == "Đang hoạt động" && e_ntcstt == "false") {
+                            tbntcstt.innerText = "Vô hiệu hóa"
+                            tbntcstt.style.color = "tomato"
+                        }
+                        if (tbntcstt.innerText == "Vô hiệu hóa" && e_ntcstt == "true") {
+                            tbntcstt.innerText = "Đang hoạt động"
+                            tbntcstt.style.color = "forestgreen"
+                        }
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("success");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("success");
+                        }, 2000);
+                    }
+                    else {
+                        document.getElementById("clbg_nt").style.backgroundColor = "rgba(255,152,60, 0.4)";
+                        $(".notify").toggleClass("activenoti");
+                        $("#notifyType").toggleClass("warning");
+                        setTimeout(function () {
+                            $(".notify").removeClass("activenoti");
+                            $("#notifyType").removeClass("warning");
+                        }, 2000);
+                    }                  
+                },
+                error: function (err) {
+                    $('#fade_' + id).modal("hide");
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+        }
+        }
+</script>
+
+
+
+
+
+

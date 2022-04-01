@@ -1,0 +1,34 @@
+﻿<div class="ed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ed-com-t1-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.hutech.edu.vn/homepage/lien-he/so-do-den-truong" target="_blank">Trung tâm Hỗ trợ Sinh viên</a>
+                        </li>
+                        <li>
+                            <a href="tel:02871099218">Điện thoại: (028) 5445 7777 - Fax: (028) 5445 4444</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!--Đăng nhập - hiện tên người dùng -->
+                <div class="ed-com-t1-right">
+                    <ul>
+                        @if (Session["LogIn"] != null)
+                        {
+                            <li><a href="@Url.Action("DSDangKy","HomeSV")">@Session["nameSV"]</a></li>
+                            <li><a href="@Url.Action("LogOut","AccountSV")">Đăng xuất</a></li>                         
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("LoginSV","AccountSV")">Đăng nhập</a></li>
+                            <li><a href="@Url.Action("RegisterSV","AccountSV")">Đăng kí</a></li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

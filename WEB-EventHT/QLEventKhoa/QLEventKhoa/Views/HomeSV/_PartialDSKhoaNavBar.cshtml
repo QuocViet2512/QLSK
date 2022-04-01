@@ -1,0 +1,70 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbKhoa>
+@using QLEventKhoa.ViewModels
+
+<!-- LOGO AND MENU SECTION -->
+<div class="top-logo" data-spy="affix" data-offset-top="250">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="wed-logo" style="height:auto">
+                    <a href="@Url.Action("IndexSV","HomeSV")">
+                        <img src="~/images/logo/LOGOMAIN.png" style="width:90%;height:58px;margin-bottom:5px " />
+                    </a>
+                </div>
+                <div class="main-menu dropdowncc">
+                    <ul>
+                        <li><a href="@Url.Action("IndexSV","HomeSV")">Trang chủ</a></li>
+
+                        <li class="cour-menu">
+                            <a href="#" class="mm-arr">Sự kiện-Hội nghị Khoa</a>
+                            <!-- MEGA MENU 1 -->
+                            <div class="mm-pos">
+                                <div class="cour-mm m-menu">
+                                    <div class="m-menu-inn">
+                                        <div class="mm1-com mm1-cour-com mm1-s12">
+                                            <ul>
+                                                @foreach (var item in Model)
+                                                {
+                                                    <li><a href="@Url.Action("getEventbyKhoa","HomeSV",new {id=item.idKhoa })">@item.tenKhoa</a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown" style="margin-left:5px">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" @*data-toggle="dropdown"*@ aria-haspopup="true" aria-expanded="false">
+                                Sự kiện của tôi
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <div class="mm-pos">
+                                    <div class="m-menu-inn">
+                                        <div class="mm1-com mm1-cour-com mm1-s12">
+                                            <ul style="width:210px">
+                                                <li><a href="@Url.Action("ProfileSV","AccountSV")">Thông tin cá nhân</a></li>
+                                                <li><a href="@Url.Action("DSDangKy","HomeSV")">Sự kiện tham gia</a></li>
+                                                <li><a href="@Url.Action("DSDangKyOld","HomeSV")">Sự kiện  đã tham gia</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <li><a href="@Url.Action("LienHeSV","HomeSV")">Liên hệ</a></li>
+                        <li><a href="@Url.Action("AboutUs","HomeSV")">Về chúng tôi</a></li>
+                    </ul>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

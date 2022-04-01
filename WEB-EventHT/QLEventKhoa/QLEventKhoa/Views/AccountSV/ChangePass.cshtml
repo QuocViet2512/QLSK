@@ -1,0 +1,78 @@
+﻿@model QLEventKhoa.ViewModels.ChangePassSVViewModels
+@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+<section>
+    <div class="db">
+        <!--LEFT SECTION THÔNG TIN CÁ NHÂN-->
+        @Html.Partial("_PartialPageLeftSV")
+        <!--CENTER SECTION-->
+        <div class="db-2">
+            <div class="db-2-com db-2-main">
+                <h4>Đổi mật khẩu</h4>
+                <div class="db-2-main-com db2-form-pay db2-form-com">
+                    @if (Session["LogIn"] == null)
+                    {
+                        <p>Vui lòng <a href="@Url.Action("LoginSV", "AccountSV")">Đăng nhập</a></p>
+                    }
+                    else
+                    {
+
+                        using (Html.BeginForm("ChangePass","AccountSV",FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="col s12">
+                                <div class="row">
+
+                                    <div class="input-field col s12">
+                                        <b>Mật khẩu hiện tại</b>
+                                        <span>
+                                            @Html.EditorFor(model => model.matKhauSV, new { htmlAttributes = new { required = "required", id = "matKhauSV", title = "Mật khẩu hiện tại", @maxlength = "100", placeholder = "Mật khẩu hiện tại" } })
+                                            @Html.ValidationMessageFor(model => model.matKhauSV, "", new { @class = "text-danger" })
+
+                                        </span>
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <b>Mật khẩu mới</b>
+                                        <span>
+                                            @Html.EditorFor(model => model.newPassword, new { htmlAttributes = new { required = "required", id = "newPassword", title = "Mật khẩu mới", @maxlength = "100", placeholder = "Mật khẩu mới" } })
+                                            @Html.ValidationMessageFor(model => model.newPassword, "", new { @class = "text-danger" })
+
+                                        </span>
+                                    </div>
+
+                                    <div class="input-field col s12">
+                                        <b>Mật khẩu nhập lại</b>
+                                        <span>
+                                            @Html.EditorFor(model => model.RenewPassword, new { htmlAttributes = new { required = "required", id = "RenewPassword", title = "Mật khẩu nhập lại", @maxlength = "100", placeholder = "Mật khẩu nhập lại" } })
+                                            @Html.ValidationMessageFor(model => model.RenewPassword, "", new { @class = "text-danger" })
+
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="row">                                
+                                    <div class="input-field col s12 m6">
+                                        <button type="submit" id="save-btn" class="full-btn btn btn-warning waves-light waves-effect"><i class="fa fa-pencil" aria-hidden="true"></i> Sửa thông tin</button>
+                                    </div>
+
+                                    <div class="input-field col s12 m6">
+                                        <a href="#" class="full-btn btn btn-danger waves-light waves-effect"><i class="fa fa-times" aria-hidden="true"></i> Huỷ</a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+        <!--RIGHT SECTION-->
+
+    </div>
+</section>
+
+

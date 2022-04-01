@@ -1,0 +1,197 @@
+﻿@model IEnumerable<QLEventKhoa.Models.tbTaiKhoanSV>
+@{
+    ViewBag.Title = "QLTKSV";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<section class="content-header">
+    <h1 style="text-align:center">
+        <b>Quản lí tài khoản sinh viên</b>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="@Url.Action("IndexAD", "HomeAD")"><i class="fa fa-dashboard"></i>Home</a></li>
+        <li class="active"><a href="@Url.Action("QLTKSV","QLTaiKhoanSV")">Quản lý tài khoản sinh viên</a></li>
+    </ol>
+</section>
+<style>
+    #success {
+        background: #ff3939;
+    }
+
+    #warning {
+        background: #ff3939;
+    }
+
+    #failure {
+        background: #ff3939;
+    }
+
+    .notify {
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        top: 0px;
+        width: 0;
+        height: 0;
+        box-sizing: border-box;
+        color: white;
+        text-align: center;
+        background: rgba(0,0,0,.6);
+        overflow: hidden;
+        transition: width .4s, height .4s;
+        border-radius: 15px;
+    }
+
+    #notifyType:before {
+        display: block;
+        margin-top: 15px;
+    }
+
+    .activenoti {
+        height: 50px;
+        width: 60%;
+    }
+
+    .success:before {
+        Content: "Cập nhật thành công!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .warning:before {
+        Content: "Không có gì được cập nhật!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+
+    .failure:before {
+        Content: "Cập nhật thất bại, xin vui lòng thử lại !!";
+        color: darkslategray;
+        font-size: 15px;
+        font-weight: bold;
+    }
+</style>
+<!-- Main content NỘI DUNG CHÍNH RAZOR -->
+<section class="content">
+    <!-- Your Page Content Here -->
+    <div class="row">
+        <div class="box">
+
+            <div class="box-header">
+                <!-- <h3 class="box-title">Data Table With Full Features</h3> -->
+                <button style="height:35px" onclick="location.reload()" data-toggle="tooltip" data-placement="right" title="Tải lại trang" class="btn btn-warning glyphicon glyphicon-refresh"></button>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <table id="tbqltksv" class="table table-bordered table-hover">
+                    <thead class="alert-info">
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center">Mã sinh viên</th>
+                            <th class="text-center">Tên sinh viên</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Trạng thái </th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            int row = 0;
+
+                            foreach (var item in Model)
+                            {
+
+                                <tr>
+
+                                    <td class="text-center" style="width:10px">@(row += 1)</td>
+                                    <td id="msv_@item.idAccSV">@item.tbSinhVien.maSV</td>
+                                    <td id="tsv_@item.idAccSV">@item.tbSinhVien.tenSV</td>
+                                    <td>@item.tbSinhVien.emailSV</td>
+
+                                    @if (item.statusAccSV == true)
+                                    {
+                                        <td class="text-center"> <b style="color:forestgreen" id="tbntcstt_@item.idAccSV"> Đang hoạt động   </b></td>
+                                    }
+                                    else
+                                    {
+                                        <td class="text-center"><b style="color:tomato" id="tbntcstt_@item.idAccSV"> Vô hiệu hóa  </b> </td>
+                                    }
+
+                                    <td class="text-center" style="width:230px">
+
+                                        <a href="@Url.Action("CHANGESTT", "QLTAIKHOANSV", new { id = item.idAccSV })" type="button" class="btn btn-danger">  Vô hiệu hóa </a>
+                                        <a href="#" type="button" class="btn btn-success " onclick="reset(@item.idAccSV)"> Đặt lại mật khẩu </a>
+                                    </td>
+
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                    <tfoot class="alert-info">
+
+                        <tr>
+                            <th>#</th>
+                            <th class="text-center">Mã sinh viên</th>
+                            <th class="text-center">Tên sinh viên</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Trạng thái </th>
+                            <th class="text-center">Thao tác</th>
+                        </tr>
+
+                    </tfoot>
+                </table>
+            </div><!-- /.box-body -->
+            <div id="clbg_nt" class="notify"><span id="notifyType" class=""></span></div>
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+    <!-- /.row -->
+</section>
+
+
+<script>
+    //datatable
+    $(function () {
+        $('#tbqltksv').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "responsive": true,
+        });
+    });
+
+
+    function reset(id) {
+        var ten = document.getElementById("tsv_" + id);
+        var ma = document.getElementById("msv_" + id);
+        if (confirm("Đặt lại mật khẩu cho sinh viên:" + ten.textContent + " - " + ma.textContent + "?") == true) {
+            $.ajax({
+                url: '/QLtaikhoansv/resetpass',
+                type: "POST",
+                data: { id },
+                success: function (response) {
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(0, 255,80, 0.6)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("success");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("success");
+                    }, 2000);
+                },
+                error: function (err) {
+                    document.getElementById("clbg_nt").style.backgroundColor = "rgba(200,0,40, 0.4)";
+                    $(".notify").toggleClass("activenoti");
+                    $("#notifyType").toggleClass("failure");
+                    setTimeout(function () {
+                        $(".notify").removeClass("activenoti");
+                        $("#notifyType").removeClass("failure");
+                    }, 2000);
+                }
+            });
+        }
+    }
+</script>
+

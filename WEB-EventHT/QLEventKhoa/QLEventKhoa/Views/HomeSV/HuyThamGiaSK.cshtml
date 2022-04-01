@@ -1,0 +1,48 @@
+﻿@model QLEventKhoa.Models.tbThamGiaEvent
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <center><h3><b>@Model.tenEvent</b></h3></center>
+    @using (Html.BeginForm("HuyThamGiaSK", "HomeSV", new { id = Model.idThamGiaEvent }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true,"", new { @class = "text-danger" })
+        
+        <div class="form-group">
+            <b>Ngày bắt đầu sự kiện: </b>
+            @Model.ngayBatDau.ToString("dd-MM-yyyy HH:mm")
+        </div>
+       
+        <div class="form-group">
+            <b>  Họ và tên sinh viên tham gia:</b>
+            @Model.tenSV
+        </div>
+        <div class="form-group">
+            <b>MSSV:</b> @Model.maSV
+        </div>
+        <div class="form-group">
+            <b>Lớp:</b>
+            @Model.tenLopHoc - <b>Khoa: </b>@Model.tbSinhVien.tbKhoa.tenKhoa
+        </div>
+        <div class="form-group">
+            <b>Email liên lạc: </b>
+            @Model.emailSV
+        </div>
+        <div class="form-group">
+            <b>Số điện thoại liên lạc: </b>
+            @Model.phoneSV
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-weight:bold">Đóng</button>
+            <button type="submit" class="btn btn-warning" onlick="HuyThamGiaSK();" style="margin-right:5px;font-weight:bold">Hủy tham gia</button>
+        </div>
+    }
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model QLEventKhoa.Models.tbTaiKhoanSV
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+
+
+<section>
+    <div class="tr-register">
+        <div class="tr-regi-form">
+            <h4>Đăng nhập</h4>
+            <h5>@ViewBag.ThongBao</h5>
+            <!-- <p>Miễn phí và luôn như vậy</p> -->
+
+            @using (Html.BeginForm("LoginSV", "AccountSV", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="col s12" id="login-form">
+                    <div class="row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="input-field col s12">
+                            @Html.EditorFor(model => model.maSV, new { htmlAttributes = new { @class = "validate", placeholder = "Mã số sinh viên", @maxlength = "10", required = "required" } })
+
+                            @Html.ValidationMessageFor(model => model.maSV, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            @Html.EditorFor(model => model.matKhauSV, new { htmlAttributes = new { @class = "validate", placeholder = "Nhập mật khẩu", required = "required"} })
+                            @Html.ValidationMessageFor(model => model.matKhauSV, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="hidden" name="action" value="login">
+                            <button type="submit" class="waves-effect waves-light btn-large full-btn btn-primary" id="btn-login">Đăng nhập</button>
+                        </div>
+                    </div>
+                    <div class="title-line">
+                        <div class="tl-1"></div>
+                        <div class="tl-2k"><p>hoặc</p></div>
+                        <div class="tl-3"></div>
+                    </div>
+                </div>
+            }
+            <p><a href="@Url.Action("RegisterSV","AccountSV")">Đăng ký tài khoản?</a></p>
+            <p><a href="#">Quên mật khẩu?</a></p>
+        </div>
+    </div>
+</section>

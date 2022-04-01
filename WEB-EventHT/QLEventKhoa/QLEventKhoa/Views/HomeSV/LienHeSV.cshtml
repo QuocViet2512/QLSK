@@ -1,0 +1,101 @@
+﻿@model QLEventKhoa.ViewModels.LienHeBenSVViewModels
+@{
+    ViewBag.Title = "Liên hệ";
+    Layout = "~/Views/Shared/_LayoutSV.cshtml";
+}
+
+
+
+<section>
+    <div class="db">
+        <!--CENTER SECTION-->
+        <div class="db-2" style="margin-left:155px;margin-right:150px">
+            <div class="db-2-com db-2-main">
+                <center>
+                    <h4>Liên hệ</h4>
+                </center>
+                <div>
+                   <center>@ViewBag.success</center>
+                </div>
+                <div class="db-2-main-com db2-form-pay db2-form-com">
+                    @using (Html.BeginForm("LienHeSV", "HomeSV", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col s12" id="add-lienhe-form">
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    @Html.EditorFor(model => model.tieuDeLH, new { htmlAttributes = new { @class = "validate", @maxlength = "255", title = "Tên tiêu đề", placeholder = "Tiêu đề liên hệ", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.tieuDeLH, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    @Html.DropDownListFor(model => model.idLoaiLH, new SelectList(Model.tbLoaiLHs, "idLoaiLH", "tenLoaiLH"), "Vui lòng chọn loại liên hệ", htmlAttributes: new { @class = "form-control", required = "SVui lòng chọn loại liên hệ" })
+                                    @Html.ValidationMessageFor(model => model.idLoaiLH, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    @Html.EditorFor(model => model.maSV, new { htmlAttributes = new { @class = "validate", @maxlength = "10", title = "Mã số sinh viên", placeholder = "Nhập mã số sinh viên", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.maSV, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="input-field col s12">
+                                    @Html.EditorFor(model => model.tenSV, new { htmlAttributes = new { @class = "validate", @maxlength = "40", title = "Tên sinh viên", placeholder = "Nhập  tên sinh viên", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.tenSV, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    @Html.EditorFor(model => model.emailSV, new { htmlAttributes = new { @class = "validate", @maxlength = "50", title = "Email sinh viên", placeholder = "Nhập email", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.emailSV, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div class="input-field col s12">
+                                    @Html.EditorFor(model => model.phoneSV, new { htmlAttributes = new { @class = "validate", @maxlength = "18", title = "Số điện thoai", placeholder = "Nhập  số điện thoại", required = "required" } })
+                                    @Html.ValidationMessageFor(model => model.phoneSV, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <textarea class="validate" id="noiDungLH" name="noiDungLH"></textarea>
+                                    @Html.ValidationMessageFor(model => model.noiDungLH, "", new {@class="text-danger" })
+                                </div>
+                            </div>
+                            <script>
+
+                                var editor = CKEDITOR.replace('noiDungLH');
+
+                            </script>
+
+                            <div class="row" style="padding-left:250px">
+                             
+
+                                <div class="input-field col s12 m4">
+                                    <button type="submit" id="submit-btn" class="full-btn btn btn-success waves-light waves-effect"><i class="fa fa-paper-plane" aria-hidden="true"></i> Gửi liên hệ</button>
+                                </div>
+
+                                <div class="input-field col s12 m4">
+                                    <button type="reset" class="full-btn btn btn-danger waves-light waves-effect"><i class="fa fa-times" aria-hidden="true"></i> Huỷ</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <!--RIGHT SECTION-->
+    </div>
+</section>
+<style>
+    .cke_combo_text {
+        width: 90px;
+    }
+</style>
